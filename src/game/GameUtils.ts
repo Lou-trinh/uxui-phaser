@@ -49,7 +49,7 @@ const gameUtils = {
         spine.scale = scale;
     },
 
-    createButton: function (
+    createImage: function (
         scene: Scene,
         percentX: integer,
         percentY: integer,
@@ -63,7 +63,7 @@ const gameUtils = {
             0,
             key,
             scale
-        ).setInteractive();
+        )
         
         const btnWidth = btn.width;
         
@@ -76,16 +76,26 @@ const gameUtils = {
         btn.x = x;
 
         const btnHeight = btn.height;
-        
+
         let y = scene.cameras.main.height * percentY / 100;
 
-        if (percentX == 0 || percentX == 100) {
+        if (percentY == 0 || percentY == 100) {
             y = percentY == 0 ? y + btnHeight / 4 : y - btnHeight / 4;
         }
-        
+
         btn.y = y;
         
         return btn;
+    },
+    
+    createButton: function (
+        scene: Scene,
+        percentX: integer,
+        percentY: integer,
+        key: string,
+        scale: number = 1
+    ) {
+       return this.createImage(scene, percentX, percentY, key, scale).setInteractive();
     }
 }
 
