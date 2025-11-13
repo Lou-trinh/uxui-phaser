@@ -2,52 +2,42 @@ import { Scene } from 'phaser';
 import gameUtils from "../GameUtils.ts";
 
 
-export class Shop extends Scene {
+export class Inventory extends Scene {
     constructor ()
     {
-        super('Shop');
+        super('Inventory');
     }
-    
+
     preload() {
         this.load.setPath('assets');
         this.load.image('back-btn', 'back-btn.png');
-        this.load.image('shop-title', 'shop-title.png');
+        this.load.image('inventory-title', 'inventory-title.png');
         this.load.image('dark-blue-bar', 'dark-blue-bar.png');
         this.load.image('background-item', 'background-item.png');
-        this.load.image('item-sale', 'item-sale.png');
-        this.load.image('item-not-sale', 'item-not-sale.png');
-        this.load.image('icon-dark-bar-1', 'icon-dark-bar-1.png');
-        this.load.image('icon-dark-bar-2', 'icon-dark-bar-2.png');
+        this.load.image('icon-dark-bar-11', 'icon-dark-bar-11.png');
+        this.load.image('icon-dark-bar-22', 'icon-dark-bar-22.png');
         this.load.image('icon-dark-bar-3', 'icon-dark-bar-3.png');
         this.load.image('icon-dark-bar-4', 'icon-dark-bar-4.png');
         this.load.image('icon-dark-bar-5', 'icon-dark-bar-5.png');
-        this.load.image('background-purchase', 'background-purchase.png');
-        this.load.image('item-character-box', 'item-character-box.png');
-        this.load.image('item-purchase', 'item-purchase.png');
-        this.load.image('cancel-button', 'cancel-button.png');
-        this.load.image('buy-button', 'buy-button.png');
-        this.load.image('cost-chip', 'cost-chip.png');
-        this.load.image('min', 'min.png');
-        this.load.image('max', 'max.png');
-        this.load.image('minus', 'minus.png');
-        this.load.image('add', 'add.png');
-        this.load.image('item-info', 'item-info.png');
+        this.load.image('character-pieces', 'character-pieces.png');
+        this.load.image('trunk-pieces', 'trunk-pieces.png');
+        this.load.image('rarity', 'rarity.png');
     }
-    
+
     create() {
         this.createInformationBar();
-        this.createShopTitle();
+        this.createInventoryTitle();
         this.createBackButton();
         this.createBackgroundItem();
         this.createDarkBlueBar();
         this.createIconBar();
         this.createItemBox();
     }
-    
-    createBackButton() {
-        const shop = gameUtils.createButton(this, 7, 8, 'back-btn', 0.5);
 
-        shop.on('pointerdown', () => {
+    createBackButton() {
+        const backBtn = gameUtils.createButton(this, 7, 8, 'back-btn', 0.5);
+
+        backBtn.on('pointerdown', () => {
             this.scene.start('Game');
         });
     }
@@ -89,50 +79,63 @@ export class Shop extends Scene {
         );
         coin2Text.setOrigin(0, 0.5);
     }
-    
-    createShopTitle() {
-        gameUtils.createImage(this, 100, 8, 'shop-title', 0.5);
+
+    createInventoryTitle() {
+        gameUtils.createImage(this, 100, 8, 'inventory-title', 0.5);
     }
-    
+
     createDarkBlueBar() {
         gameUtils.createImage(this, 50, 15, 'dark-blue-bar', 0.5);
+        gameUtils.createButton(this, 85, 15 , 'rarity', 0.5);
     }
 
     createIconBar() {
         const startX = 8; // Vị trí bắt đầu
         const iconWidth = 14; // Chiều rộng mỗi icon
 
-        const inventoryBtn = gameUtils.createButton(this, startX + 0 * iconWidth, 15, 'icon-dark-bar-1', 0.5);
-        inventoryBtn.on('pointerdown', () => {
-            this.scene.start('Inventory');
+        gameUtils.createButton(this, startX + 0 * iconWidth - 1, 15.5, 'icon-dark-bar-11', 0.5);
+
+        const shopBtn = gameUtils.createButton(this, startX + 1 * iconWidth, 15, 'icon-dark-bar-22', 0.5);
+        shopBtn.on('pointerdown', () => {
+            this.scene.start('Shop');
         });
 
-        gameUtils.createButton(this, startX + 1 * iconWidth, 15.5, 'icon-dark-bar-2', 0.5);
         gameUtils.createButton(this, startX + 2 * iconWidth, 15, 'icon-dark-bar-3', 0.5);
         gameUtils.createButton(this, startX + 3 * iconWidth, 15, 'icon-dark-bar-4', 0.5);
         gameUtils.createButton(this, startX + 4 * iconWidth, 15, 'icon-dark-bar-5', 0.5);
     }
-    
+
     createBackgroundItem() {
         gameUtils.createImage(this, 50, 60, 'background-item', 0.5);
     }
 
     createItemBox() {
-        const positions = [
-            [0, 34], [50, 34], [100, 34],
-            [0, 60], [50, 60], [100, 60],
-            [0, 86], [50, 86], [100, 86],
-        ];
+        const startX = 14; // Vị trí bắt đầu X
+        const startY = 27; // Vị trí bắt đầu Y
+        const itemWidth = 18; // Khoảng cách giữa các item theo X
+        const itemHeight = 10; // Khoảng cách giữa các item theo Y
+        const columns = 5; // Số cột
+        const rows = 5; // Số hàng
 
-        positions.forEach(([x, y], i) => {
-            const texture = i % 2 === 0 ? 'item-sale' : 'item-not-sale';
-            const item = gameUtils.createButton(this, x, y, texture, 0.5);
+        // Tạo item character-pieces đầu tiên
+        gameUtils.createButton(this, startX, startY, 'character-pieces', 0.5);
 
-            item.on('pointerdown', () => this.createItemPurchase());
-        });
+        // Tạo các item trunk-pieces còn lại
+        let itemCount = 1; // Bắt đầu từ 1 vì item đầu tiên đã tạo
+
+        for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < columns; col++) {
+                // Bỏ qua item đầu tiên (0,0) vì đã tạo character-pieces
+                if (row === 0 && col === 0) continue;
+
+                const x = startX + (col * itemWidth);
+                const y = startY + (row * itemHeight);
+
+                gameUtils.createButton(this, x, y, 'trunk-pieces', 0.5);
+
+                itemCount++;
+            }
+        }
     }
-    
-    createItemPurchase() {
-        this.add.image(0, 0, 'background-purchase').setOrigin(0.5);
-    }
+
 }
