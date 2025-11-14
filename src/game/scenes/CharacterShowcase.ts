@@ -125,5 +125,9 @@ export class CharacterShowcase extends Scene {
     
     createNameCharacterFrame() {
         gameUtils.createImage(this, 7, 24, 'name-character-frame', 0.5);
+        gameUtils.createImage(this, 7, 24, 'level-character', 0.5);
+        gameUtils.createImage(this, 31, 24, 'akane', 0.5);
+        gameUtils.createImage(this, 50, 19, 'level-10', 0.5);
+        gameUtils.createImage(this, 7, 30, 'icon-gun', 0.5);
     }
 }

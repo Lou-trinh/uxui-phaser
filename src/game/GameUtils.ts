@@ -34,19 +34,24 @@ const gameUtils = {
     createSpine: function (
         scene: Scene, 
         dataKey: string, 
-        atlasKey: string, 
-        x: integer, 
-        y: integer, 
-        scale: integer = 1,
+        atlasKey: string,
+        percentX : number,
+        percentY: number, 
+        scale: number = 1,
         defaultSkin: string = "default",
         defaultAnimation: string = "idle",
     ) {
+        let x = scene.cameras.main.width * percentX / 100;
+        let y = scene.cameras.main.height * percentY / 100;
+        
         const spine = scene.add.spine(x, y, dataKey, atlasKey,
             new SkinsAndAnimationBoundsProvider(null, [defaultSkin])
         );
         spine.skeleton.setSkinByName(defaultAnimation);
         spine.animationState.setAnimation(0, 'idle', true);
         spine.scale = scale;
+        
+        return spine;
     },
 
     createImage: function (
