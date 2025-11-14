@@ -1,5 +1,5 @@
 import { Scene } from 'phaser';
-import gameUtils from "../GameUtils.ts";
+import gameUtils from "../GameUtils";
 
 
 export class Inventory extends Scene {
@@ -9,23 +9,12 @@ export class Inventory extends Scene {
     }
 
     preload() {
-        this.load.setPath('assets');
-        this.load.image('back-btn', 'back-btn.png');
-        this.load.image('inventory-title', 'inventory-title.png');
-        this.load.image('dark-blue-bar', 'dark-blue-bar.png');
-        this.load.image('background-item', 'background-item.png');
-        this.load.image('icon-dark-bar-11', 'icon-dark-bar-11.png');
-        this.load.image('icon-dark-bar-22', 'icon-dark-bar-22.png');
-        this.load.image('icon-dark-bar-3', 'icon-dark-bar-3.png');
-        this.load.image('icon-dark-bar-4', 'icon-dark-bar-4.png');
-        this.load.image('icon-dark-bar-5', 'icon-dark-bar-5.png');
-        this.load.image('character-pieces', 'character-pieces.png');
-        this.load.image('trunk-pieces', 'trunk-pieces.png');
-        this.load.image('rarity', 'rarity.png');
     }
 
     create() {
-        this.createInformationBar();
+        let a = 120000;
+        
+        this.createInformationBar(a.toString());
         this.createInventoryTitle();
         this.createBackButton();
         this.createBackgroundItem();
@@ -38,11 +27,11 @@ export class Inventory extends Scene {
         const backBtn = gameUtils.createButton(this, 7, 8, 'back-btn', 0.5);
 
         backBtn.on('pointerdown', () => {
-            this.scene.start('Game');
+            this.scene.start('Home');
         });
     }
 
-    createInformationBar () {
+    createInformationBar (a: string) {
         gameUtils.createImage(this, 0, 3.25, 'blue-bar-small', 0.5);
         gameUtils.createImage(this, 61, 3.25, 'price-coin-frame', 0.5);
         gameUtils.createImage(this, 86, 3.25, 'price-coin-frame', 0.5);
@@ -55,7 +44,7 @@ export class Inventory extends Scene {
         const coin1Text = this.add.text(
             this.scale.width * 0.82,
             this.scale.height * 0.032,
-            '120000',
+            a,
             {
                 fontFamily: 'Arial Narrow, Arial, sans-serif',
                 fontSize: '16px',
@@ -69,7 +58,7 @@ export class Inventory extends Scene {
         const coin2Text = this.add.text(
             this.scale.width * 0.57,
             this.scale.height * 0.032,
-            '120000',
+            a,
             {
                 fontFamily: 'Arial Narrow, Arial, sans-serif',
                 fontSize: '16px',

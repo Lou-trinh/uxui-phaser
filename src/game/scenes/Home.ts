@@ -1,44 +1,17 @@
 import { Scene } from 'phaser';
 import { EventBus } from '../EventBus';
-import gameUtils from "../GameUtils.ts";
+import gameUtils from "../GameUtils";
+import gameData from "../GameData";
 
-export class Game extends Scene
+export class Home extends Scene
 {
     constructor ()
     {
-        super('Game');
+        super('Home');
     }
 
     preload ()
     {
-        this.load.setPath('assets');
-        this.load.image('background', 'home.png');
-        this.load.image('battle', 'battle.png');
-        this.load.image('hero-recruit', 'hero-recruit.png');
-        this.load.image('reward', 'reward.png');
-        this.load.image('shop', 'shop.png');
-        this.load.image('team', 'team.png');
-        this.load.image('guild', 'guild.png');
-        this.load.image('inventory', 'inventory.png');
-        this.load.image('wallet', 'wallet.png');
-        this.load.image('character', 'character.png')
-        this.load.image('blue-bar', 'blue-bar.png')
-        this.load.image('black-bar', 'black-bar.png')
-        this.load.image('blue-bar-small', 'blue-bar-small.png')
-        this.load.image('gift', 'gift.png')
-        this.load.image('change-character', 'change-character.png')
-        this.load.image('price-coin-frame', 'price-coin-frame.png')
-        this.load.image('coin-1', 'coin-1.png')
-        this.load.image('coin-2', 'coin-2.png')
-        this.load.image('subtract', 'subtract.png')
-        this.load.image('avata-player', 'avata-player.png')
-        this.load.image('vip-level', 'vip-level.png')
-        this.load.image('icon-copy', 'icon-copy.png')
-        this.load.image('id-frame', 'id-frame.png')
-        this.load.image('notice-icon', 'notice-icon.png')
-        this.load.image('sound-icon', 'sound-icon.png')
-        this.load.image('lib-icon', 'lib-icon.png')
-        this.load.image('frame-notice', 'frame-notice.png')
     }
 
     create ()
@@ -58,16 +31,20 @@ export class Game extends Scene
     
     createMiddleButtons () {
         gameUtils.createButton(this, 100, 76, 'battle', 0.5);
-        gameUtils.createButton(this, 0, 76, 'hero-recruit', 0.5);
-        const shop = gameUtils.createButton(this, 0, 65, 'shop', 0.5);
-        const reward = gameUtils.createButton(this, 100, 65, 'reward', 0.5);
-        
-        shop.on('pointerdown', () => {
+        const characterBtn = gameUtils.createButton(this, 0, 76, 'hero-recruit', 0.5);
+        const shopBtn = gameUtils.createButton(this, 0, 65, 'shop', 0.5);
+        const rewardBtn = gameUtils.createButton(this, 100, 65, 'reward', 0.5);
+
+        shopBtn.on('pointerdown', () => {
             this.scene.start('Shop');
         });
 
-        reward.on('pointerdown', () => {
+        rewardBtn.on('pointerdown', () => {
             this.scene.start('Reward');
+        });
+
+        characterBtn.on('pointerdown', () => {
+            this.scene.start('CharacterShowcase');
         });
     }
 
@@ -75,10 +52,10 @@ export class Game extends Scene
         gameUtils.createImage(this, 50, 95, 'blue-bar', 0.5);
         gameUtils.createButton(this, 14, 94, 'team', 0.5);
         gameUtils.createButton(this, 38, 94, 'guild', 0.5);
-        const inventory = gameUtils.createButton(this, 62, 94, 'inventory', 0.5);
+        const inventoryBtn = gameUtils.createButton(this, 62, 94, 'inventory', 0.5);
         gameUtils.createButton(this, 86, 94, 'wallet', 0.5);
 
-        inventory.on('pointerdown', () => {
+        inventoryBtn.on('pointerdown', () => {
             this.scene.start('Inventory');
         });
     }
@@ -112,7 +89,7 @@ export class Game extends Scene
         gameUtils.createImage(this, 51, 8.5, 'coin-2', 0.5);
         gameUtils.createImage(this, 95, 9, 'subtract', 0.5);
         gameUtils.createImage(this, 70, 9, 'subtract', 0.5);
-        gameUtils.createImage(this, 10, 12.5, 'avata-player', 0.5);
+        gameUtils.createImage(this, 10, 12.5, 'avatar-player', 0.5);
         gameUtils.createImage(this, 25, 9, 'vip-level', 0.5);
         gameUtils.createImage(this, 42, 15, 'icon-copy', 0.5);
         gameUtils.createImage(this, 27, 15, 'id-frame', 0.5);
@@ -121,7 +98,7 @@ export class Game extends Scene
         const playerNameText = this.add.text(
             this.scale.width * 0.19,
             this.scale.height * 0.125,
-            'Player name999',
+            gameData.getUsername(),
             {
                 fontFamily: 'Arial Narrow, Arial, sans-serif',
                 fontSize: '18px',

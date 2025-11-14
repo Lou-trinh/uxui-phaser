@@ -1,5 +1,5 @@
 import { Scene } from 'phaser';
-import gameUtils from "../GameUtils.ts";
+import gameUtils from "../GameUtils";
 
 
 export class Shop extends Scene {
@@ -9,29 +9,6 @@ export class Shop extends Scene {
     }
     
     preload() {
-        this.load.setPath('assets');
-        this.load.image('back-btn', 'back-btn.png');
-        this.load.image('shop-title', 'shop-title.png');
-        this.load.image('dark-blue-bar', 'dark-blue-bar.png');
-        this.load.image('background-item', 'background-item.png');
-        this.load.image('item-sale', 'item-sale.png');
-        this.load.image('item-not-sale', 'item-not-sale.png');
-        this.load.image('icon-dark-bar-1', 'icon-dark-bar-1.png');
-        this.load.image('icon-dark-bar-2', 'icon-dark-bar-2.png');
-        this.load.image('icon-dark-bar-3', 'icon-dark-bar-3.png');
-        this.load.image('icon-dark-bar-4', 'icon-dark-bar-4.png');
-        this.load.image('icon-dark-bar-5', 'icon-dark-bar-5.png');
-        this.load.image('background-purchase', 'background-purchase.png');
-        this.load.image('item-character-box', 'item-character-box.png');
-        this.load.image('item-purchase', 'item-purchase.png');
-        this.load.image('cancel-button', 'cancel-button.png');
-        this.load.image('buy-button', 'buy-button.png');
-        this.load.image('cost-chip', 'cost-chip.png');
-        this.load.image('min', 'min.png');
-        this.load.image('max', 'max.png');
-        this.load.image('minus', 'minus.png');
-        this.load.image('add', 'add.png');
-        this.load.image('item-info', 'item-info.png');
     }
     
     create() {
@@ -45,14 +22,14 @@ export class Shop extends Scene {
     }
     
     createBackButton() {
-        const shop = gameUtils.createButton(this, 7, 8, 'back-btn', 0.5);
+        const shopBtn = gameUtils.createButton(this, 7, 8, 'back-btn', 0.5);
 
-        shop.on('pointerdown', () => {
-            this.scene.start('Game');
+        shopBtn.on('pointerdown', () => {
+            this.scene.start('Home');
         });
     }
 
-    createInformationBar () {
+    createInformationBar() {
         gameUtils.createImage(this, 0, 3.25, 'blue-bar-small', 0.5);
         gameUtils.createImage(this, 61, 3.25, 'price-coin-frame', 0.5);
         gameUtils.createImage(this, 86, 3.25, 'price-coin-frame', 0.5);
@@ -126,9 +103,9 @@ export class Shop extends Scene {
 
         positions.forEach(([x, y], i) => {
             const texture = i % 2 === 0 ? 'item-sale' : 'item-not-sale';
-            const item = gameUtils.createButton(this, x, y, texture, 0.5);
+            const itemBtn = gameUtils.createButton(this, x, y, texture, 0.5);
 
-            item.on('pointerdown', () => this.createItemPurchase());
+            itemBtn.on('pointerdown', () => this.createItemPurchase());
         });
     }
     

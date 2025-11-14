@@ -1,5 +1,5 @@
 import { Scene } from 'phaser';
-import gameUtils from "../GameUtils.ts";
+import gameUtils from "../GameUtils";
 
 
 export class Reward extends Scene {
@@ -9,18 +9,6 @@ export class Reward extends Scene {
     }
 
     preload() {
-        this.load.setPath('assets');
-        this.load.image('back-btn', 'back-btn.png');
-        this.load.image('shop-title', 'reward-title.png');
-        this.load.image('background-item', 'background-item.png');
-        this.load.image('mission', 'mission.png');
-        this.load.image('achievement', 'achievement.png');
-        this.load.image('airdrop', 'airdrop.png');
-        this.load.image('go-button', 'go-button.png');
-        this.load.image('claim-button', 'claim-button.png');
-        this.load.image('broken-line', 'broken-line.png');
-        this.load.image('frame-achievement', 'frame-achievement.png');
-        this.load.image('items', 'items.png');
     }
 
     create() {
@@ -35,11 +23,11 @@ export class Reward extends Scene {
         const backBtn = gameUtils.createButton(this, 7, 8, 'back-btn', 0.5);
 
         backBtn.on('pointerdown', () => {
-            this.scene.start('Game');
+            this.scene.start('Home');
         });
     }
 
-    createInformationBar () {
+    createInformationBar() {
         gameUtils.createImage(this, 0, 3.25, 'blue-bar-small', 0.5);
         gameUtils.createImage(this, 61, 3.25, 'price-coin-frame', 0.5);
         gameUtils.createImage(this, 86, 3.25, 'price-coin-frame', 0.5);

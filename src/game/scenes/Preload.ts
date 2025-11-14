@@ -1,0 +1,82 @@
+import {Scene} from "phaser";
+
+export class Preload extends Scene{
+    constructor ()
+    {
+        super('Preload');
+    }
+    
+    preload () {
+        this.load.setPath('assets');
+        this.load.image('achievement', 'achievement.png');
+        this.load.image('add', 'add.png');
+        this.load.image('airdrop', 'airdrop.png');
+        this.load.image('avatar-player', 'avatar-player.png');
+        this.load.image('back-btn', 'back-btn.png');
+        this.load.image('background', 'home.png');
+        this.load.image('background-item', 'background-item.png');
+        this.load.image('background-purchase', 'background-purchase.png');
+        this.load.image('battle', 'battle.png');
+        this.load.image('black-bar', 'black-bar.png');
+        this.load.image('blue-bar', 'blue-bar.png');
+        this.load.image('blue-bar-small', 'blue-bar-small.png');
+        this.load.image('broken-line', 'broken-line.png');
+        this.load.image('buy-button', 'buy-button.png');
+        this.load.image('cancel-button', 'cancel-button.png');
+        this.load.image('change-character', 'change-character.png');
+        this.load.image('character', 'character.png');
+        this.load.image('character-showcase-title', 'character-showcase-title.png');
+        this.load.image('character-pieces', 'character-pieces.png');
+        this.load.image('claim-button', 'claim-button.png');
+        this.load.image('coin-1', 'coin-1.png');
+        this.load.image('coin-2', 'coin-2.png');
+        this.load.image('cost-chip', 'cost-chip.png');
+        this.load.image('dark-blue-bar', 'dark-blue-bar.png');
+        this.load.image('frame-achievement', 'frame-achievement.png');
+        this.load.image('frame-notice', 'frame-notice.png');
+        this.load.image('gift', 'gift.png');
+        this.load.image('go-button', 'go-button.png');
+        this.load.image('guild', 'guild.png');
+        this.load.image('hero-recruit', 'hero-recruit.png');
+        this.load.image('icon-copy', 'icon-copy.png');
+        this.load.image('icon-dark-bar-1', 'icon-dark-bar-1.png');
+        this.load.image('icon-dark-bar-11', 'icon-dark-bar-11.png');
+        this.load.image('icon-dark-bar-2', 'icon-dark-bar-2.png');
+        this.load.image('icon-dark-bar-22', 'icon-dark-bar-22.png');
+        this.load.image('icon-dark-bar-3', 'icon-dark-bar-3.png');
+        this.load.image('icon-dark-bar-4', 'icon-dark-bar-4.png');
+        this.load.image('icon-dark-bar-5', 'icon-dark-bar-5.png');
+        this.load.image('id-frame', 'id-frame.png');
+        this.load.image('inventory', 'inventory.png');
+        this.load.image('inventory-title', 'inventory-title.png');
+        this.load.image('item-character-box', 'item-character-box.png');
+        this.load.image('item-info', 'item-info.png');
+        this.load.image('item-not-sale', 'item-not-sale.png');
+        this.load.image('item-purchase', 'item-purchase.png');
+        this.load.image('item-sale', 'item-sale.png');
+        this.load.image('items', 'items.png');
+        this.load.image('lib-icon', 'lib-icon.png');
+        this.load.image('max', 'max.png');
+        this.load.image('min', 'min.png');
+        this.load.image('minus', 'minus.png');
+        this.load.image('mission', 'mission.png');
+        this.load.image('mission', 'mission.png');
+        this.load.image('name-character-frame', 'name-character-frame.png');
+        this.load.image('notice-icon', 'notice-icon.png');
+        this.load.image('price-coin-frame', 'price-coin-frame.png');
+        this.load.image('rarity', 'rarity.png');
+        this.load.image('reward', 'reward.png');
+        this.load.image('shop', 'shop.png');
+        this.load.image('shop-title', 'shop-title.png');
+        this.load.image('sound-icon', 'sound-icon.png');
+        this.load.image('subtract', 'subtract.png');
+        this.load.image('team', 'team.png');
+        this.load.image('trunk-pieces', 'trunk-pieces.png');
+        this.load.image('vip-level', 'vip-level.png');
+        this.load.image('wallet', 'wallet.png');
+    }
+    
+    create() {
+        this.scene.start('Home');
+    }
+}
