@@ -47,8 +47,9 @@ const gameUtils = {
         const spine = scene.add.spine(x, y, dataKey, atlasKey,
             new SkinsAndAnimationBoundsProvider(null, [defaultSkin])
         );
-        spine.skeleton.setSkinByName(defaultAnimation);
-        spine.animationState.setAnimation(0, 'idle', true);
+        
+        spine.skeleton.setSkinByName(defaultSkin);
+        spine.animationState.setAnimation(0, defaultAnimation, true);
         spine.scale = scale;
         
         return spine;

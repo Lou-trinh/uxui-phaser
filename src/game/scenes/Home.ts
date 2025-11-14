@@ -61,7 +61,16 @@ export class Home extends Scene
     }
 
     createCharacter () {
-        gameUtils.createSpine(this, 'player-10-ui', 'player-10-ui-atlas', 50, 61, 0.5) 
+        gameUtils.createSpine(
+            this, 
+            'player-10-ui', 
+            'player-10-ui-atlas', 
+            50, 
+            61, 
+            0.5, 
+            'default', 
+            'idle'
+        ) 
     }
 
     createBackground () {
