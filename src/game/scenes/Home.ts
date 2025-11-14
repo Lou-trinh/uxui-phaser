@@ -66,7 +66,7 @@ export class Home extends Scene
             'player-10-ui', 
             'player-10-ui-atlas', 
             50, 
-            61, 
+            70, 
             0.5, 
             'default', 
             'idle'
