@@ -51,6 +51,7 @@ const gameUtils = {
         spine.skeleton.setSkinByName(defaultSkin);
         spine.animationState.setAnimation(0, defaultAnimation, true);
         spine.scale = scale;
+        spine.setOrigin();
         
         return spine;
     },
