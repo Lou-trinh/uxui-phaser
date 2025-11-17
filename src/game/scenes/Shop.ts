@@ -72,11 +72,66 @@ export class Shop extends Scene {
             const texture = i % 2 === 0 ? 'item-sale' : 'item-not-sale';
             const itemBtn = createObjectUtils.createButton(this, x, y, texture, 0.5);
 
-            itemBtn.on('pointerdown', () => this.createItemPurchase());
+            itemBtn.on('pointerdown', () => this.createBackgroundPurchase());
         });
     }
-    
-    createItemPurchase() {
-        this.add.image(0, 0, 'background-purchase').setOrigin(0.5);
+
+    createBackgroundPurchase() {
+        const blurOverlay = this.add.rectangle(
+            this.cameras.main.centerX,
+            this.cameras.main.centerY,
+            this.cameras.main.width,
+            this.cameras.main.height,
+            0x000000,
+            0.5
+        ).setDepth(10).setInteractive();
+
+        const bg = createObjectUtils.createBackground(this, 'background-purchase')
+            .setScale(0.12, 0.22)
+            .setDepth(11)
+            .setInteractive();
+
+        const maskGraphics = this.make.graphics();
+        maskGraphics.fillStyle(0xffffff);
+        maskGraphics.fillRoundedRect(
+            bg.x - bg.displayWidth / 2,
+            bg.y - bg.displayHeight / 2,
+            bg.displayWidth,
+            bg.displayHeight,
+            8
+        );
+
+        const mask = maskGraphics.createGeometryMask();
+        bg.setMask(mask);
+        
+        const btnCancel = createObjectUtils.createButton(this, 30, 77, 'cancel-button', 0.5)
+            .setScale(0.5, 0.5)
+            .setDepth(12)
+        
+        const btnBuy = createObjectUtils.createButton(this, 70, 77, 'buy-button', 0.5)
+            .setScale(0.5, 0.5)
+            .setDepth(12)
+        
+        const arrComponent = [
+            blurOverlay,
+            bg,
+            maskGraphics,
+            btnCancel,
+            btnBuy
+        ];
+
+        btnCancel.on('pointerdown', () => {
+            this.destroyButtonComponents(arrComponent);
+        });
+
+        blurOverlay.on('pointerdown', () => {
+            this.destroyButtonComponents(arrComponent)
+        });
+    }
+
+    destroyButtonComponents(arrComponent: Phaser.GameObjects.GameObject[]) {
+        arrComponent.forEach(function (component) {
+            component.destroy();
+        });
     }
 }
