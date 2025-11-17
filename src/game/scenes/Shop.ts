@@ -79,12 +79,12 @@ export class Shop extends Scene {
         const startX = 8; // Vị trí bắt đầu
         const iconWidth = 14; // Chiều rộng mỗi icon
 
-        const inventoryBtn = createObjectUtils.createButton(this, startX + 0 * iconWidth, 15, 'icon-dark-bar-1', 0.5);
+        const inventoryBtn = createObjectUtils.createButton(this, startX, 15, 'icon-dark-bar-1', 0.5);
         inventoryBtn.on('pointerdown', () => {
             this.scene.start('Inventory');
         });
 
-        createObjectUtils.createButton(this, startX + 1 * iconWidth, 15.5, 'icon-dark-bar-2', 0.5);
+        createObjectUtils.createButton(this, startX + iconWidth, 15.5, 'icon-dark-bar-2', 0.5);
         createObjectUtils.createButton(this, startX + 2 * iconWidth, 15, 'icon-dark-bar-3', 0.5);
         createObjectUtils.createButton(this, startX + 3 * iconWidth, 15, 'icon-dark-bar-4', 0.5);
         createObjectUtils.createButton(this, startX + 4 * iconWidth, 15, 'icon-dark-bar-5', 0.5);
