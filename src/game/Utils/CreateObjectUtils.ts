@@ -24,11 +24,11 @@ const createObjectUtils = {
         return object;
     },
 
-    createBackground: function (scene: Scene, key: string) {
+    createBackground: function (scene: Scene, key: string, scale: number = 0.5) {
         const sceneWidth = scene.cameras.main.width;
         const sceneHeight = scene.cameras.main.height;
 
-        return  this.createGameObject(scene, sceneWidth / 2, sceneHeight / 2, key, 0.5);
+        return  this.createGameObject(scene, sceneWidth / 2, sceneHeight / 2, key, scale);
     },
 
     createSpine: function (
