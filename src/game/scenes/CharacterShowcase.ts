@@ -1,5 +1,5 @@
 import {Scene} from "phaser";
-import createObjectUtils from "../Utils/createObjectUtils.ts";
+import createObjectUtils from "../Utils/CreateObjectUtils.ts";
 import gameDataUtils from "../Utils/GameDataUtils.ts";
 
 export class CharacterShowcase extends Scene {

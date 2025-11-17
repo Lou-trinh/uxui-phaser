@@ -1,5 +1,6 @@
 import { Scene } from 'phaser';
-import createObjectUtils from "../Utils/createObjectUtils.ts";
+import createObjectUtils from "../Utils/CreateObjectUtils.ts";
+import uiUtils from "../Utils/UIUtils.ts";
 
 
 export class Inventory extends Scene {
@@ -12,9 +13,7 @@ export class Inventory extends Scene {
     }
 
     create() {
-        let a = 120000;
-        
-        this.createInformationBar(a.toString());
+        this.createInformationBar();
         this.createInventoryTitle();
         this.createBackButton();
         this.createBackgroundItem();
@@ -31,42 +30,8 @@ export class Inventory extends Scene {
         });
     }
 
-    createInformationBar (a: string) {
-        createObjectUtils.createImage(this, 0, 3.25, 'blue-bar-small', 0.5);
-        createObjectUtils.createImage(this, 61, 3.25, 'price-coin-frame', 0.5);
-        createObjectUtils.createImage(this, 86, 3.25, 'price-coin-frame', 0.5);
-        createObjectUtils.createImage(this, 76, 2.55, 'coin-1', 0.5);
-        createObjectUtils.createImage(this, 51, 2.55, 'coin-2', 0.5);
-        createObjectUtils.createImage(this, 95, 3.25, 'subtract', 0.5);
-        createObjectUtils.createImage(this, 70, 3.25, 'subtract', 0.5);
-
-        // Thêm text số coin 1
-        const coin1Text = this.add.text(
-            this.scale.width * 0.82,
-            this.scale.height * 0.032,
-            a,
-            {
-                fontFamily: 'Arial Narrow, Arial, sans-serif',
-                fontSize: '16px',
-                color: '#ffffff',
-                fontStyle: 'bold'
-            }
-        );
-        coin1Text.setOrigin(0, 0.5);
-
-        // Thêm text số coin 2
-        const coin2Text = this.add.text(
-            this.scale.width * 0.57,
-            this.scale.height * 0.032,
-            a,
-            {
-                fontFamily: 'Arial Narrow, Arial, sans-serif',
-                fontSize: '16px',
-                color: '#ffffff',
-                fontStyle: 'bold'
-            }
-        );
-        coin2Text.setOrigin(0, 0.5);
+    createInformationBar () {
+        uiUtils.createInformationBar(this);
     }
 
     createInventoryTitle() {

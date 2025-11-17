@@ -1,6 +1,6 @@
 import { Scene } from 'phaser';
 import { EventBus } from '../EventBus';
-import createObjectUtils from "../Utils/createObjectUtils.ts";
+import createObjectUtils from "../Utils/CreateObjectUtils.ts";
 import gameDataUtils from "../Utils/GameDataUtils.ts";
 
 export class Home extends Scene
