@@ -23,8 +23,6 @@ const config: Types.Core.GameConfig = {
     ]
 };
 
-console.log(Object.values(Scenes));
-
 const StartGame = (parent: string) => {
     return new Game({ ...config, parent });
 }
