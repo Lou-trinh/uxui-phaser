@@ -116,7 +116,7 @@ const gameUtils = {
         scene.load.setPath(BaseUrl);
         scene.load.spineAtlas(atlasKey, atlasUrl);
         scene.load.spineJson(dataKey, dataUrl);
-        scene.load.setPath('');
+        scene.load.setPath('assets');
     },
     
     loadPlayer: function (
