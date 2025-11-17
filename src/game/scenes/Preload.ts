@@ -1,5 +1,5 @@
 import {Scene} from "phaser";
-import GameUtils from "../GameUtils.ts";
+import PreloadUtils from "../Utils/PreloadUtils.ts";
 
 export class Preload extends Scene{
     constructor ()
@@ -101,7 +101,7 @@ export class Preload extends Scene{
     }
     
     preloadHome() {
-        GameUtils.preloadPlayer(
+        PreloadUtils.preloadPlayer(
             this,
             'player-10',
             'player-10-ui-atlas',
@@ -112,7 +112,7 @@ export class Preload extends Scene{
     }
     
     preloadHeroRecruit() {
-        GameUtils.preloadPlayer(
+        PreloadUtils.preloadPlayer(
             this,
             'player-8',
             'player-8-ui-atlas',

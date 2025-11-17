@@ -1,7 +1,7 @@
 import { Scene } from 'phaser';
 import { EventBus } from '../EventBus';
-import gameUtils from "../GameUtils";
-import gameData from "../GameData";
+import createObjectUtils from "../Utils/createObjectUtils.ts";
+import gameDataUtils from "../Utils/GameDataUtils.ts";
 
 export class Home extends Scene
 {
@@ -30,10 +30,10 @@ export class Home extends Scene
     }
     
     createMiddleButtons () {
-        gameUtils.createButton(this, 100, 76, 'battle', 0.5);
-        const characterBtn = gameUtils.createButton(this, 0, 76, 'hero-recruit', 0.5);
-        const shopBtn = gameUtils.createButton(this, 0, 65, 'shop', 0.5);
-        const rewardBtn = gameUtils.createButton(this, 100, 65, 'reward', 0.5);
+        createObjectUtils.createButton(this, 100, 76, 'battle', 0.5);
+        const characterBtn = createObjectUtils.createButton(this, 0, 76, 'hero-recruit', 0.5);
+        const shopBtn = createObjectUtils.createButton(this, 0, 65, 'shop', 0.5);
+        const rewardBtn = createObjectUtils.createButton(this, 100, 65, 'reward', 0.5);
 
         shopBtn.on('pointerdown', () => {
             this.scene.start('Shop');
@@ -49,11 +49,11 @@ export class Home extends Scene
     }
 
     createBottomButtons () {
-        gameUtils.createImage(this, 50, 95, 'blue-bar', 0.5);
-        gameUtils.createButton(this, 14, 94, 'team', 0.5);
-        gameUtils.createButton(this, 38, 94, 'guild', 0.5);
-        const inventoryBtn = gameUtils.createButton(this, 62, 94, 'inventory', 0.5);
-        gameUtils.createButton(this, 86, 94, 'wallet', 0.5);
+        createObjectUtils.createImage(this, 50, 95, 'blue-bar', 0.5);
+        createObjectUtils.createButton(this, 14, 94, 'team', 0.5);
+        createObjectUtils.createButton(this, 38, 94, 'guild', 0.5);
+        const inventoryBtn = createObjectUtils.createButton(this, 62, 94, 'inventory', 0.5);
+        createObjectUtils.createButton(this, 86, 94, 'wallet', 0.5);
 
         inventoryBtn.on('pointerdown', () => {
             this.scene.start('Inventory');
@@ -61,7 +61,7 @@ export class Home extends Scene
     }
 
     createCharacter () {
-        gameUtils.createSpine(
+        createObjectUtils.createSpine(
             this, 
             'player-10-ui', 
             'player-10-ui-atlas', 
@@ -74,7 +74,7 @@ export class Home extends Scene
     }
 
     createBackground () {
-        gameUtils.createBackground(this, 'background');
+        createObjectUtils.createBackground(this, 'background');
         
         this.add.rectangle(
             this.scale.width / 2,
@@ -87,27 +87,27 @@ export class Home extends Scene
     }
     
     createNoticeBar () {
-        gameUtils.createImage(this, 0, 4, 'black-bar', 0.5);
+        createObjectUtils.createImage(this, 0, 4, 'black-bar', 0.5);
     }
 
     createInformationBar () {
-        gameUtils.createImage(this, 0, 9, 'blue-bar-small', 0.5);
-        gameUtils.createImage(this, 61, 9, 'price-coin-frame', 0.5);
-        gameUtils.createImage(this, 86, 9, 'price-coin-frame', 0.5);
-        gameUtils.createImage(this, 76, 8.5, 'coin-1', 0.5);
-        gameUtils.createImage(this, 51, 8.5, 'coin-2', 0.5);
-        gameUtils.createImage(this, 95, 9, 'subtract', 0.5);
-        gameUtils.createImage(this, 70, 9, 'subtract', 0.5);
-        gameUtils.createImage(this, 10, 12.5, 'avatar-player', 0.5);
-        gameUtils.createImage(this, 25, 9, 'vip-level', 0.5);
-        gameUtils.createImage(this, 42, 15, 'icon-copy', 0.5);
-        gameUtils.createImage(this, 27, 15, 'id-frame', 0.5);
+        createObjectUtils.createImage(this, 0, 9, 'blue-bar-small', 0.5);
+        createObjectUtils.createImage(this, 61, 9, 'price-coin-frame', 0.5);
+        createObjectUtils.createImage(this, 86, 9, 'price-coin-frame', 0.5);
+        createObjectUtils.createImage(this, 76, 8.5, 'coin-1', 0.5);
+        createObjectUtils.createImage(this, 51, 8.5, 'coin-2', 0.5);
+        createObjectUtils.createImage(this, 95, 9, 'subtract', 0.5);
+        createObjectUtils.createImage(this, 70, 9, 'subtract', 0.5);
+        createObjectUtils.createImage(this, 10, 12.5, 'avatar-player', 0.5);
+        createObjectUtils.createImage(this, 25, 9, 'vip-level', 0.5);
+        createObjectUtils.createImage(this, 42, 15, 'icon-copy', 0.5);
+        createObjectUtils.createImage(this, 27, 15, 'id-frame', 0.5);
 
         // Thêm text Player Name
         const playerNameText = this.add.text(
             this.scale.width * 0.19,
             this.scale.height * 0.125,
-            gameData.getUsername(),
+            gameDataUtils.getUsername(),
             {
                 fontFamily: 'Arial Narrow, Arial, sans-serif',
                 fontSize: '18px',
@@ -160,11 +160,11 @@ export class Home extends Scene
     }
     
     createGift () {
-        gameUtils.createButton(this, 100, 19, 'gift', 0.5);
+        createObjectUtils.createButton(this, 100, 19, 'gift', 0.5);
     }
     
     createChangeCharacter() {
-        gameUtils.createButton(this, 50, 50, 'change-character', 0.5);
+        createObjectUtils.createButton(this, 50, 50, 'change-character', 0.5);
     }
 
     createFrameNotice() {
@@ -181,8 +181,8 @@ export class Home extends Scene
         const startX = 79; // Vị trí bắt đầu
         const spacing = 8; // Khoảng cách giữa các icon
 
-        gameUtils.createButton(this, startX, iconY, 'notice-icon', 0.5);
-        gameUtils.createButton(this, startX + spacing, iconY, 'sound-icon', 0.5);
-        gameUtils.createButton(this, startX + spacing * 2, iconY, 'lib-icon', 0.5);
+        createObjectUtils.createButton(this, startX, iconY, 'notice-icon', 0.5);
+        createObjectUtils.createButton(this, startX + spacing, iconY, 'sound-icon', 0.5);
+        createObjectUtils.createButton(this, startX + spacing * 2, iconY, 'lib-icon', 0.5);
     }
 }

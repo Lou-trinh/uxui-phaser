@@ -1,5 +1,5 @@
 import { Scene } from 'phaser';
-import gameUtils from "../GameUtils";
+import createObjectUtils from "../Utils/createObjectUtils.ts";
 
 
 export class Inventory extends Scene {
@@ -24,7 +24,7 @@ export class Inventory extends Scene {
     }
 
     createBackButton() {
-        const backBtn = gameUtils.createButton(this, 7, 8, 'back-btn', 0.5);
+        const backBtn = createObjectUtils.createButton(this, 7, 8, 'back-btn', 0.5);
 
         backBtn.on('pointerdown', () => {
             this.scene.start('Home');
@@ -32,13 +32,13 @@ export class Inventory extends Scene {
     }
 
     createInformationBar (a: string) {
-        gameUtils.createImage(this, 0, 3.25, 'blue-bar-small', 0.5);
-        gameUtils.createImage(this, 61, 3.25, 'price-coin-frame', 0.5);
-        gameUtils.createImage(this, 86, 3.25, 'price-coin-frame', 0.5);
-        gameUtils.createImage(this, 76, 2.55, 'coin-1', 0.5);
-        gameUtils.createImage(this, 51, 2.55, 'coin-2', 0.5);
-        gameUtils.createImage(this, 95, 3.25, 'subtract', 0.5);
-        gameUtils.createImage(this, 70, 3.25, 'subtract', 0.5);
+        createObjectUtils.createImage(this, 0, 3.25, 'blue-bar-small', 0.5);
+        createObjectUtils.createImage(this, 61, 3.25, 'price-coin-frame', 0.5);
+        createObjectUtils.createImage(this, 86, 3.25, 'price-coin-frame', 0.5);
+        createObjectUtils.createImage(this, 76, 2.55, 'coin-1', 0.5);
+        createObjectUtils.createImage(this, 51, 2.55, 'coin-2', 0.5);
+        createObjectUtils.createImage(this, 95, 3.25, 'subtract', 0.5);
+        createObjectUtils.createImage(this, 70, 3.25, 'subtract', 0.5);
 
         // Thêm text số coin 1
         const coin1Text = this.add.text(
@@ -70,32 +70,32 @@ export class Inventory extends Scene {
     }
 
     createInventoryTitle() {
-        gameUtils.createImage(this, 100, 8, 'inventory-title', 0.5);
+        createObjectUtils.createImage(this, 100, 8, 'inventory-title', 0.5);
     }
 
     createDarkBlueBar() {
-        gameUtils.createImage(this, 50, 15, 'dark-blue-bar', 0.5);
-        gameUtils.createButton(this, 85, 15 , 'rarity', 0.5);
+        createObjectUtils.createImage(this, 50, 15, 'dark-blue-bar', 0.5);
+        createObjectUtils.createButton(this, 85, 15 , 'rarity', 0.5);
     }
 
     createIconBar() {
         const startX = 8; // Vị trí bắt đầu
         const iconWidth = 14; // Chiều rộng mỗi icon
 
-        gameUtils.createButton(this, startX + 0 * iconWidth - 1, 15.5, 'icon-dark-bar-11', 0.5);
+        createObjectUtils.createButton(this, startX + 0 * iconWidth - 1, 15.5, 'icon-dark-bar-11', 0.5);
 
-        const shopBtn = gameUtils.createButton(this, startX + 1 * iconWidth, 15, 'icon-dark-bar-22', 0.5);
+        const shopBtn = createObjectUtils.createButton(this, startX + 1 * iconWidth, 15, 'icon-dark-bar-22', 0.5);
         shopBtn.on('pointerdown', () => {
             this.scene.start('Shop');
         });
 
-        gameUtils.createButton(this, startX + 2 * iconWidth, 15, 'icon-dark-bar-3', 0.5);
-        gameUtils.createButton(this, startX + 3 * iconWidth, 15, 'icon-dark-bar-4', 0.5);
-        gameUtils.createButton(this, startX + 4 * iconWidth, 15, 'icon-dark-bar-5', 0.5);
+        createObjectUtils.createButton(this, startX + 2 * iconWidth, 15, 'icon-dark-bar-3', 0.5);
+        createObjectUtils.createButton(this, startX + 3 * iconWidth, 15, 'icon-dark-bar-4', 0.5);
+        createObjectUtils.createButton(this, startX + 4 * iconWidth, 15, 'icon-dark-bar-5', 0.5);
     }
 
     createBackgroundItem() {
-        gameUtils.createImage(this, 50, 60, 'background-item', 0.5);
+        createObjectUtils.createImage(this, 50, 60, 'background-item', 0.5);
     }
 
     createItemBox() {
@@ -107,7 +107,7 @@ export class Inventory extends Scene {
         const rows = 5; // Số hàng
 
         // Tạo item character-pieces đầu tiên
-        gameUtils.createButton(this, startX, startY, 'character-pieces', 0.5);
+        createObjectUtils.createButton(this, startX, startY, 'character-pieces', 0.5);
 
         // Tạo các item trunk-pieces còn lại
         let itemCount = 1; // Bắt đầu từ 1 vì item đầu tiên đã tạo
@@ -120,7 +120,7 @@ export class Inventory extends Scene {
                 const x = startX + (col * itemWidth);
                 const y = startY + (row * itemHeight);
 
-                gameUtils.createButton(this, x, y, 'trunk-pieces', 0.5);
+                createObjectUtils.createButton(this, x, y, 'trunk-pieces', 0.5);
 
                 itemCount++;
             }

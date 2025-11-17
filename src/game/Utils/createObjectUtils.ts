@@ -2,7 +2,7 @@ import { Scene } from 'phaser';
 import { SkinsAndAnimationBoundsProvider } 
     from "@esotericsoftware/spine-phaser-v3";
 
-const gameUtils = {
+const createObjectUtils = {
     createGameObject: function (
         scene: Scene,
         x: number, 
@@ -104,32 +104,6 @@ const gameUtils = {
     ) {
        return this.createImage(scene, percentX, percentY, key, scale).setInteractive();
     },
-
-    preloadSpine: function (
-        scene: Scene,
-        BaseUrl: string,
-        atlasKey: string,
-        atlasUrl: string,
-        dataKey: string,
-        dataUrl: string
-    ) {
-        scene.load.setPath(BaseUrl);
-        scene.load.spineAtlas(atlasKey, atlasUrl);
-        scene.load.spineJson(dataKey, dataUrl);
-        scene.load.setPath('assets');
-    },
-    
-    preloadPlayer: function (
-        scene: Scene,
-        PlayerUrl: string,
-        atlasKey: string, 
-        atlasUrl: string, 
-        dataKey: string, 
-        dataUrl: string
-    ) {
-        const url = `assets/players/${PlayerUrl}/`;
-        this.preloadSpine(scene, url, atlasKey, atlasUrl, dataKey, dataUrl);
-    }
 }
 
-export default gameUtils;
+export default createObjectUtils;

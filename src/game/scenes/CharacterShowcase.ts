@@ -1,6 +1,6 @@
 import {Scene} from "phaser";
-import gameUtils from "../GameUtils";
-import gameData from "../GameData";
+import createObjectUtils from "../Utils/createObjectUtils.ts";
+import gameDataUtils from "../Utils/GameDataUtils.ts";
 
 export class CharacterShowcase extends Scene {
     constructor() {
@@ -23,27 +23,27 @@ export class CharacterShowcase extends Scene {
     }
 
     createBackground () {
-        gameUtils.createImage(this, 50, 50, 'background', 0.5);
+        createObjectUtils.createImage(this, 50, 50, 'background', 0.5);
     }
 
     createInformationBar() {
-        gameUtils.createImage(this, 0, 4, 'blue-bar-small', 0.5);
-        gameUtils.createImage(this, 61, 4, 'price-coin-frame', 0.5);
-        gameUtils.createImage(this, 86, 4, 'price-coin-frame', 0.5);
-        gameUtils.createImage(this, 76, 3.5, 'coin-1', 0.5);
-        gameUtils.createImage(this, 51, 3.5, 'coin-2', 0.5);
-        gameUtils.createImage(this, 95, 4, 'subtract', 0.5);
-        gameUtils.createImage(this, 70, 4, 'subtract', 0.5);
-        gameUtils.createImage(this, 10, 7.5, 'avatar-player', 0.5);
-        gameUtils.createImage(this, 25, 4, 'vip-level', 0.5);
-        gameUtils.createImage(this, 42, 10, 'icon-copy', 0.5);
-        gameUtils.createImage(this, 27, 10, 'id-frame', 0.5);
+        createObjectUtils.createImage(this, 0, 4, 'blue-bar-small', 0.5);
+        createObjectUtils.createImage(this, 61, 4, 'price-coin-frame', 0.5);
+        createObjectUtils.createImage(this, 86, 4, 'price-coin-frame', 0.5);
+        createObjectUtils.createImage(this, 76, 3.5, 'coin-1', 0.5);
+        createObjectUtils.createImage(this, 51, 3.5, 'coin-2', 0.5);
+        createObjectUtils.createImage(this, 95, 4, 'subtract', 0.5);
+        createObjectUtils.createImage(this, 70, 4, 'subtract', 0.5);
+        createObjectUtils.createImage(this, 10, 7.5, 'avatar-player', 0.5);
+        createObjectUtils.createImage(this, 25, 4, 'vip-level', 0.5);
+        createObjectUtils.createImage(this, 42, 10, 'icon-copy', 0.5);
+        createObjectUtils.createImage(this, 27, 10, 'id-frame', 0.5);
 
         // Thêm text Player Name
         const playerNameText = this.add.text(
             this.scale.width * 0.19,
             this.scale.height * 0.074,
-            gameData.getUsername(),
+            gameDataUtils.getUsername(),
             {
                 fontFamily: 'Arial Narrow, Arial, sans-serif',
                 fontSize: '18px',
@@ -109,17 +109,17 @@ export class CharacterShowcase extends Scene {
         const startX = 79; // Vị trí bắt đầu
         const spacing = 8; // Khoảng cách giữa các icon
 
-        gameUtils.createButton(this, startX, iconY, 'notice-icon', 0.5);
-        gameUtils.createButton(this, startX + spacing, iconY, 'sound-icon', 0.5);
-        gameUtils.createButton(this, startX + spacing * 2, iconY, 'lib-icon', 0.5);
+        createObjectUtils.createButton(this, startX, iconY, 'notice-icon', 0.5);
+        createObjectUtils.createButton(this, startX + spacing, iconY, 'sound-icon', 0.5);
+        createObjectUtils.createButton(this, startX + spacing * 2, iconY, 'lib-icon', 0.5);
     }
 
     createShopTitle() {
-        gameUtils.createImage(this, 100, 15, 'character-showcase-title', 0.5);
+        createObjectUtils.createImage(this, 100, 15, 'character-showcase-title', 0.5);
     }
 
     createBackButton() {
-        const shopBtn = gameUtils.createButton(this, 7, 15, 'back-btn', 0.5);
+        const shopBtn = createObjectUtils.createButton(this, 7, 15, 'back-btn', 0.5);
 
         shopBtn.on('pointerdown', () => {
             this.scene.start('Home');
@@ -127,36 +127,36 @@ export class CharacterShowcase extends Scene {
     }
     
     createNameCharacterFrame() {
-        gameUtils.createImage(this, 7, 24, 'name-character-frame', 0.5);
-        gameUtils.createImage(this, 7, 24, 'level-character', 0.5);
-        gameUtils.createImage(this, 31, 24, 'akane', 0.5);
-        gameUtils.createImage(this, 50, 19, 'level-10', 0.5);
-        gameUtils.createImage(this, 7, 30, 'icon-gun', 0.5);
-        gameUtils.createImage(this, 33, 28.8, 'frame-star', 0.5);
-        gameUtils.createImage(this, 20, 28.8, 'star', 0.5);
-        gameUtils.createImage(this, 25, 28.8, 'star', 0.5);
-        gameUtils.createImage(this, 30, 28.8, 'star', 0.5);
-        gameUtils.createImage(this, 35, 28.8, 'star', 0.5);
-        gameUtils.createImage(this, 28, 31.5, 'gunner', 0.5);
+        createObjectUtils.createImage(this, 7, 24, 'name-character-frame', 0.5);
+        createObjectUtils.createImage(this, 7, 24, 'level-character', 0.5);
+        createObjectUtils.createImage(this, 31, 24, 'akane', 0.5);
+        createObjectUtils.createImage(this, 50, 19, 'level-10', 0.5);
+        createObjectUtils.createImage(this, 7, 30, 'icon-gun', 0.5);
+        createObjectUtils.createImage(this, 33, 28.8, 'frame-star', 0.5);
+        createObjectUtils.createImage(this, 20, 28.8, 'star', 0.5);
+        createObjectUtils.createImage(this, 25, 28.8, 'star', 0.5);
+        createObjectUtils.createImage(this, 30, 28.8, 'star', 0.5);
+        createObjectUtils.createImage(this, 35, 28.8, 'star', 0.5);
+        createObjectUtils.createImage(this, 28, 31.5, 'gunner', 0.5);
     }
     
     createLevelUpFrame() {
-        gameUtils.createImage(this, 29, 80, 'circle1', 0.5);
-        gameUtils.createImage(this, 29, 80, 'circle2', 0.5);
-        gameUtils.createImage(this, 29, 80, 'circle3', 0.5);
-        gameUtils.createButton(this, 29, 72, 'level-up', 0.5);
-        gameUtils.createButton(this, 14, 80, 'up-grade', 0.5);
-        gameUtils.createButton(this, 44, 80, 'extract', 0.5);
-        gameUtils.createButton(this, 29, 88, 'mint', 0.5);
+        createObjectUtils.createImage(this, 29, 80, 'circle1', 0.5);
+        createObjectUtils.createImage(this, 29, 80, 'circle2', 0.5);
+        createObjectUtils.createImage(this, 29, 80, 'circle3', 0.5);
+        createObjectUtils.createButton(this, 29, 72, 'level-up', 0.5);
+        createObjectUtils.createButton(this, 14, 80, 'up-grade', 0.5);
+        createObjectUtils.createButton(this, 44, 80, 'extract', 0.5);
+        createObjectUtils.createButton(this, 29, 88, 'mint', 0.5);
     }
     
     createSellEquipFrame() {
-        gameUtils.createButton(this, 83, 86, 'sell', 0.5);
-        gameUtils.createButton(this, 83, 92, 'equip', 0.5);
+        createObjectUtils.createButton(this, 83, 86, 'sell', 0.5);
+        createObjectUtils.createButton(this, 83, 92, 'equip', 0.5);
     }
     
     createCharacter() {
-        gameUtils.createSpine(
+        createObjectUtils.createSpine(
             this,
             'player-8-ui',
             'player-8-ui-atlas',
