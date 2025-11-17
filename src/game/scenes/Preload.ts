@@ -28,16 +28,23 @@ export class Preload extends Scene{
         this.load.image('character', 'character.png');
         this.load.image('character-showcase-title', 'character-showcase-title.png');
         this.load.image('character-pieces', 'character-pieces.png');
+        this.load.image('circle1', 'circle1.png');
+        this.load.image('circle2', 'circle2.png');
+        this.load.image('circle3', 'circle3.png');
         this.load.image('claim-button', 'claim-button.png');
         this.load.image('coin-1', 'coin-1.png');
         this.load.image('coin-2', 'coin-2.png');
         this.load.image('cost-chip', 'cost-chip.png');
         this.load.image('dark-blue-bar', 'dark-blue-bar.png');
+        this.load.image('equip', 'equip.png');
+        this.load.image('extract', 'extract.png');
         this.load.image('frame-achievement', 'frame-achievement.png');
         this.load.image('frame-notice', 'frame-notice.png');
+        this.load.image('frame-star', 'frame-star.png');
         this.load.image('gift', 'gift.png');
         this.load.image('go-button', 'go-button.png');
         this.load.image('guild', 'guild.png');
+        this.load.image('gunner', 'gunner.png');
         this.load.image('hero-recruit', 'hero-recruit.png');
         this.load.image('icon-copy', 'icon-copy.png');
         this.load.image('icon-dark-bar-1', 'icon-dark-bar-1.png');
@@ -59,10 +66,12 @@ export class Preload extends Scene{
         this.load.image('items', 'items.png');
         this.load.image('level-10', 'level-10.png');
         this.load.image('level-character', 'level-character.png');
+        this.load.image('level-up', 'level-up.png');
         this.load.image('lib-icon', 'lib-icon.png');
         this.load.image('max', 'max.png');
         this.load.image('min', 'min.png');
         this.load.image('minus', 'minus.png');
+        this.load.image('mint', 'mint.png');
         this.load.image('mission', 'mission.png');
         this.load.image('mission', 'mission.png');
         this.load.image('name-character-frame', 'name-character-frame.png');
@@ -70,16 +79,20 @@ export class Preload extends Scene{
         this.load.image('price-coin-frame', 'price-coin-frame.png');
         this.load.image('rarity', 'rarity.png');
         this.load.image('reward', 'reward.png');
+        this.load.image('sell', 'sell.png');
         this.load.image('shop', 'shop.png');
         this.load.image('shop-title', 'shop-title.png');
         this.load.image('sound-icon', 'sound-icon.png');
+        this.load.image('star', 'star.png');
         this.load.image('subtract', 'subtract.png');
         this.load.image('team', 'team.png');
         this.load.image('trunk-pieces', 'trunk-pieces.png');
+        this.load.image('up-grade', 'up-grade.png');
         this.load.image('vip-level', 'vip-level.png');
         this.load.image('wallet', 'wallet.png');
         
         this.preloadHome();
+        this.preloadHeroRecruit();
     }
     
     create() {
@@ -90,5 +103,11 @@ export class Preload extends Scene{
         this.load.setPath('assets/players/player-10/');
         this.load.spineAtlas('player-10-ui-atlas', 'player_10_ui.atlas');
         this.load.spineJson('player-10-ui', 'player_10_ui.json');
+    }
+    
+    preloadHeroRecruit() {
+        this.load.setPath('assets/players/player-8/');
+        this.load.spineAtlas('player-8-ui-atlas', 'player_8_ui.atlas');
+        this.load.spineJson('player-8-ui', 'player_8_ui.json');
     }
 }

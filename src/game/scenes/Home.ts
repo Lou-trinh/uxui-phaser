@@ -70,7 +70,7 @@ export class Home extends Scene
             0.5, 
             'default', 
             'idle'
-        ) 
+        )
     }
 
     createBackground () {

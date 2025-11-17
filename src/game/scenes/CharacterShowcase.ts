@@ -17,6 +17,9 @@ export class CharacterShowcase extends Scene {
         this.createShopTitle();
         this.createBackButton();
         this.createNameCharacterFrame();
+        this.createCharacter()
+        this.createLevelUpFrame();
+        this.createSellEquipFrame();
     }
 
     createBackground () {
@@ -129,5 +132,39 @@ export class CharacterShowcase extends Scene {
         gameUtils.createImage(this, 31, 24, 'akane', 0.5);
         gameUtils.createImage(this, 50, 19, 'level-10', 0.5);
         gameUtils.createImage(this, 7, 30, 'icon-gun', 0.5);
+        gameUtils.createImage(this, 33, 28.8, 'frame-star', 0.5);
+        gameUtils.createImage(this, 20, 28.8, 'star', 0.5);
+        gameUtils.createImage(this, 25, 28.8, 'star', 0.5);
+        gameUtils.createImage(this, 30, 28.8, 'star', 0.5);
+        gameUtils.createImage(this, 35, 28.8, 'star', 0.5);
+        gameUtils.createImage(this, 28, 31.5, 'gunner', 0.5);
+    }
+    
+    createLevelUpFrame() {
+        gameUtils.createImage(this, 29, 80, 'circle1', 0.5);
+        gameUtils.createImage(this, 29, 80, 'circle2', 0.5);
+        gameUtils.createImage(this, 29, 80, 'circle3', 0.5);
+        gameUtils.createButton(this, 29, 72, 'level-up', 0.5);
+        gameUtils.createButton(this, 14, 80, 'up-grade', 0.5);
+        gameUtils.createButton(this, 44, 80, 'extract', 0.5);
+        gameUtils.createButton(this, 29, 88, 'mint', 0.5);
+    }
+    
+    createSellEquipFrame() {
+        gameUtils.createButton(this, 83, 86, 'sell', 0.5);
+        gameUtils.createButton(this, 83, 92, 'equip', 0.5);
+    }
+    
+    createCharacter() {
+        gameUtils.createSpine(
+            this,
+            'player-8-ui',
+            'player-8-ui-atlas',
+            65,
+            60,
+            0.45,
+            'default',
+            'idle'
+        )
     }
 }
