@@ -101,7 +101,7 @@ export class Preload extends Scene{
     }
     
     preloadHome() {
-        GameUtils.loadPlayer(
+        GameUtils.preloadPlayer(
             this,
             'player-10',
             'player-10-ui-atlas',
@@ -112,7 +112,7 @@ export class Preload extends Scene{
     }
     
     preloadHeroRecruit() {
-        GameUtils.loadPlayer(
+        GameUtils.preloadPlayer(
             this,
             'player-8',
             'player-8-ui-atlas',

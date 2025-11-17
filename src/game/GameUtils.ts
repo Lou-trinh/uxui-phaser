@@ -105,7 +105,7 @@ const gameUtils = {
        return this.createImage(scene, percentX, percentY, key, scale).setInteractive();
     },
 
-    loadSpine: function (
+    preloadSpine: function (
         scene: Scene,
         BaseUrl: string,
         atlasKey: string,
@@ -119,7 +119,7 @@ const gameUtils = {
         scene.load.setPath('assets');
     },
     
-    loadPlayer: function (
+    preloadPlayer: function (
         scene: Scene,
         PlayerUrl: string,
         atlasKey: string, 
@@ -128,7 +128,7 @@ const gameUtils = {
         dataUrl: string
     ) {
         const url = `assets/players/${PlayerUrl}/`;
-        this.loadSpine(scene, url, atlasKey, atlasUrl, dataKey, dataUrl);
+        this.preloadSpine(scene, url, atlasKey, atlasUrl, dataKey, dataUrl);
     }
 }
 
