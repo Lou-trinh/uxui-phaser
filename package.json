@@ -32,12 +32,12 @@
     },
     "devDependencies": {
         "@esotericsoftware/spine-phaser-v3": "^4.2.95",
-        "@types/node": "^20.11.20",
-        "@vitejs/plugin-vue": "^5.2.2",
+        "@types/node": "^20.19.25",
+        "@vitejs/plugin-vue": "^5.2.4",
         "@vue/tsconfig": "^0.7.0",
-        "terser": "^5.31.0",
-        "typescript": "~5.7.2",
-        "vite": "^6.3.1",
-        "vue-tsc": "^2.2.8"
+        "terser": "^5.44.1",
+        "typescript": "~5.7.3",
+        "vite": "^6.4.1",
+        "vue-tsc": "^2.2.12"
     }
 }

@@ -103,6 +103,20 @@ const gameUtils = {
         scale: number = 1
     ) {
        return this.createImage(scene, percentX, percentY, key, scale).setInteractive();
+    },
+    
+    loadPlayer: function (
+        scene: Scene,
+        PlayerUrl: string,
+        atlasKey: string, 
+        atlasUrl: string, 
+        dataKey: string, 
+        dataUrl: string
+    ) {
+        scene.load.setPath(`assets/players/${PlayerUrl}/`);
+        scene.load.spineAtlas(atlasKey, atlasUrl);
+        scene.load.spineJson(dataKey, dataUrl);
+        scene.load.setPath('');
     }
 }
 

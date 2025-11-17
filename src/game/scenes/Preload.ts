@@ -1,4 +1,5 @@
 import {Scene} from "phaser";
+import GameUtils from "../GameUtils.ts";
 
 export class Preload extends Scene{
     constructor ()
@@ -100,14 +101,24 @@ export class Preload extends Scene{
     }
     
     preloadHome() {
-        this.load.setPath('assets/players/player-10/');
-        this.load.spineAtlas('player-10-ui-atlas', 'player_10_ui.atlas');
-        this.load.spineJson('player-10-ui', 'player_10_ui.json');
+        GameUtils.loadPlayer(
+            this,
+            'player-10',
+            'player-10-ui-atlas',
+            'player_10_ui.atlas',
+            'player-10-ui',
+            'player_10_ui.json'
+        );
     }
     
     preloadHeroRecruit() {
-        this.load.setPath('assets/players/player-8/');
-        this.load.spineAtlas('player-8-ui-atlas', 'player_8_ui.atlas');
-        this.load.spineJson('player-8-ui', 'player_8_ui.json');
+        GameUtils.loadPlayer(
+            this,
+            'player-8',
+            'player-8-ui-atlas',
+            'player_8_ui.atlas',
+            'player-8-ui',
+            'player_8_ui.json'
+        );
     }
 }
