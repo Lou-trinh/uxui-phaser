@@ -4,6 +4,13 @@ import uiUtils from "../Utils/UIUtils.ts";
 
 
 export class Shop extends Scene {
+    blurOverlay!: Phaser.GameObjects.Rectangle;
+    bg!: Phaser.GameObjects.Image;
+    maskGraphics!: Phaser.GameObjects.Graphics;
+    btnCancel!: Phaser.GameObjects.Image;
+    btnBuy!: Phaser.GameObjects.Image;
+    
+    
     constructor ()
     {
         super('Shop');
@@ -77,7 +84,14 @@ export class Shop extends Scene {
     }
 
     createBackgroundPurchase() {
-        const blurOverlay = this.add.rectangle(
+        this.setupBlurOverlay();
+        this.setupBackground();
+        this.setupCancelBtn();
+        this.setupBuyBtn();
+    }
+    
+    setupBlurOverlay() {
+        this.blurOverlay = this.add.rectangle(
             this.cameras.main.centerX,
             this.cameras.main.centerY,
             this.cameras.main.width,
@@ -86,52 +100,50 @@ export class Shop extends Scene {
             0.5
         ).setDepth(10).setInteractive();
 
-        const bg = createObjectUtils.createBackground(this, 'background-purchase')
+        this.blurOverlay.on('pointerdown', () => this.destroyPurchaseUI());
+    }
+
+    destroyPurchaseUI() {
+        this.blurOverlay?.destroy();
+        this.bg?.destroy();
+        this.maskGraphics?.destroy();
+        this.btnCancel?.destroy();
+        this.btnBuy?.destroy();
+    }
+
+    setupBackground() {
+        this.bg = createObjectUtils.createBackground(this, 'background-purchase')
             .setScale(0.12, 0.22)
             .setDepth(11)
             .setInteractive();
 
-        const maskGraphics = this.make.graphics();
-        maskGraphics.fillStyle(0xffffff);
-        maskGraphics.fillRoundedRect(
-            bg.x - bg.displayWidth / 2,
-            bg.y - bg.displayHeight / 2,
-            bg.displayWidth,
-            bg.displayHeight,
+        this.maskGraphics = this.make.graphics();
+        this.maskGraphics.fillStyle(0xffffff);
+        this.maskGraphics.fillRoundedRect(
+            this.bg.x - this.bg.displayWidth / 2,
+            this.bg.y - this.bg.displayHeight / 2,
+            this.bg.displayWidth,
+            this.bg.displayHeight,
             8
         );
 
-        const mask = maskGraphics.createGeometryMask();
-        bg.setMask(mask);
-        
-        const btnCancel = createObjectUtils.createButton(this, 30, 77, 'cancel-button', 0.5)
-            .setScale(0.5, 0.5)
-            .setDepth(12)
-        
-        const btnBuy = createObjectUtils.createButton(this, 70, 77, 'buy-button', 0.5)
-            .setScale(0.5, 0.5)
-            .setDepth(12)
-        
-        const arrComponent = [
-            blurOverlay,
-            bg,
-            maskGraphics,
-            btnCancel,
-            btnBuy
-        ];
-
-        btnCancel.on('pointerdown', () => {
-            this.destroyButtonComponents(arrComponent);
-        });
-
-        blurOverlay.on('pointerdown', () => {
-            this.destroyButtonComponents(arrComponent)
-        });
+        const mask = this.maskGraphics.createGeometryMask();
+        this.bg.setMask(mask);
     }
 
-    destroyButtonComponents(arrComponent: Phaser.GameObjects.GameObject[]) {
-        arrComponent.forEach(function (component) {
-            component.destroy();
-        });
+    setupCancelBtn() {
+        this.btnCancel = createObjectUtils.createButton(this, 30, 77, 'cancel-button', 0.5)
+            .setScale(0.5)
+            .setDepth(12);
+
+        this.btnCancel.on('pointerdown', () => this.destroyPurchaseUI());
+    }
+
+    setupBuyBtn() {
+        this.btnBuy = createObjectUtils.createButton(this, 70, 77, 'buy-button', 0.5)
+            .setScale(0.5)
+            .setDepth(12);
+
+        this.btnBuy.on('pointerdown', () => this.destroyPurchaseUI());
     }
 }

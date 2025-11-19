@@ -8,6 +8,17 @@ export class Preload extends Scene{
     }
     
     preload () {
+        this.preloadCommon();
+        this.preloadHome();
+        this.preloadHeroRecruit();
+        this.preloadShop();
+    }
+    
+    create() {
+        this.scene.start('Home');
+    }
+    
+    preloadCommon() {
         this.load.setPath('assets');
         this.load.image('achievement', 'achievement.png');
         this.load.image('add', 'add.png');
@@ -16,15 +27,11 @@ export class Preload extends Scene{
         this.load.image('avatar-player', 'avatar-player.png');
         this.load.image('back-btn', 'back-btn.png');
         this.load.image('background', 'home.png');
-        this.load.image('background-item', 'background-item.png');
-        this.load.image('background-purchase', 'background-purchase.png');
         this.load.image('battle', 'battle.png');
         this.load.image('black-bar', 'black-bar.png');
         this.load.image('blue-bar', 'blue-bar.png');
         this.load.image('blue-bar-small', 'blue-bar-small.png');
         this.load.image('broken-line', 'broken-line.png');
-        this.load.image('buy-button', 'buy-button.png');
-        this.load.image('cancel-button', 'cancel-button.png');
         this.load.image('change-character', 'change-character.png');
         this.load.image('character', 'character.png');
         this.load.image('character-showcase-title', 'character-showcase-title.png');
@@ -61,9 +68,6 @@ export class Preload extends Scene{
         this.load.image('inventory-title', 'inventory-title.png');
         this.load.image('item-character-box', 'item-character-box.png');
         this.load.image('item-info', 'item-info.png');
-        this.load.image('item-not-sale', 'item-not-sale.png');
-        this.load.image('item-purchase', 'item-purchase.png');
-        this.load.image('item-sale', 'item-sale.png');
         this.load.image('items', 'items.png');
         this.load.image('level-10', 'level-10.png');
         this.load.image('level-character', 'level-character.png');
@@ -91,13 +95,23 @@ export class Preload extends Scene{
         this.load.image('up-grade', 'up-grade.png');
         this.load.image('vip-level', 'vip-level.png');
         this.load.image('wallet', 'wallet.png');
-        
-        this.preloadHome();
-        this.preloadHeroRecruit();
+        this.load.setPath('');
+    }
+
+    preloadShop() {
+        this.load.setPath('assets/shop');
+        this.load.image('buy-button', 'buy-button.png');
+        this.load.image('cancel-button', 'cancel-button.png');
+        this.load.image('background-purchase', 'background-purchase.png');
+        this.load.image('background-item', 'background-item.png');
+        this.load.image('item-not-sale', 'item-not-sale.png');
+        this.load.image('item-purchase', 'item-purchase.png');
+        this.load.image('item-sale', 'item-sale.png');
+        this.load.setPath('');
     }
     
-    create() {
-        this.scene.start('Home');
+    preloadIconBar() {
+        
     }
     
     preloadHome() {
