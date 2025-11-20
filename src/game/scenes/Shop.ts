@@ -2,7 +2,6 @@ import { Scene } from 'phaser';
 import createObjectUtils from "../Utils/CreateObjectUtils.ts";
 import uiUtils from "../Utils/UIUtils.ts";
 
-
 export class Shop extends Scene {
     blurOverlay!: Phaser.GameObjects.Rectangle;
     bg!: Phaser.GameObjects.Image;
@@ -69,18 +68,20 @@ export class Shop extends Scene {
     }
 
     createItemBox() {
-        const positions = [
-            [0, 34], [50, 34], [100, 34],
-            [0, 60], [50, 60], [100, 60],
-            [0, 86], [50, 86], [100, 86],
-        ];
+        const count: number = 9;
+        let numRow = Math.ceil(count / 3);
+        
+        for (let i = 0; i < numRow; i++) {
+            for (let j = 0; j < 3; j++) {
+                const texture = i % 2 === 1 ? 'item-sale' : 'item-not-sale';
+                
+                const x = j * 50;
+                const y = i * 26 + 34;
+                const itemBtn = createObjectUtils.createButton(this, x, y, texture, 0.5);
 
-        positions.forEach(([x, y], i) => {
-            const texture = i % 2 === 0 ? 'item-sale' : 'item-not-sale';
-            const itemBtn = createObjectUtils.createButton(this, x, y, texture, 0.5);
-
-            itemBtn.on('pointerdown', () => this.createBackgroundPurchase());
-        });
+                itemBtn.on('pointerdown', () => this.createBackgroundPurchase());
+            }
+        }
     }
 
     createBackgroundPurchase() {
