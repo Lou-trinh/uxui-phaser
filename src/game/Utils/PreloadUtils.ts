@@ -1,6 +1,6 @@
 import { Scene } from 'phaser';
 
-const preloadUtils = {
+export default {
     preloadSpine: function (
         scene: Scene,
         BaseUrl: string,
@@ -27,5 +27,3 @@ const preloadUtils = {
         this.preloadSpine(scene, url, atlasKey, atlasUrl, dataKey, dataUrl);
     }
 }
-
-export default preloadUtils;

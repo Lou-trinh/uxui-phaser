@@ -1,6 +1,6 @@
 import { Scene } from 'phaser';
 import createObjectUtils from "../Utils/CreateObjectUtils.ts";
-import uiUtils from "../Utils/UIUtils.ts";
+import uiUtils from "../Utils/UserInterfaceUtils.ts";
 
 
 export class Inventory extends Scene {

@@ -1,6 +1,7 @@
 import { Scene } from 'phaser';
 import createObjectUtils from "../Utils/CreateObjectUtils.ts";
-import uiUtils from "../Utils/UIUtils.ts";
+import userIntefaceUtils from "../Utils/UserInterfaceUtils.ts";
+import numberUtils from "../Utils/NumberUtils.ts";
 
 export class Shop extends Scene {
     blurOverlay!: Phaser.GameObjects.Rectangle;
@@ -8,7 +9,6 @@ export class Shop extends Scene {
     maskGraphics!: Phaser.GameObjects.Graphics;
     btnCancel!: Phaser.GameObjects.Image;
     btnBuy!: Phaser.GameObjects.Image;
-    
     
     constructor ()
     {
@@ -37,7 +37,7 @@ export class Shop extends Scene {
     }
 
     createInformationBar() {
-        uiUtils.createInformationBar(this);
+        userIntefaceUtils.createInformationBar(this);
     }
     
     createShopTitle() {
@@ -73,7 +73,8 @@ export class Shop extends Scene {
         
         for (let i = 0; i < numRow; i++) {
             for (let j = 0; j < 3; j++) {
-                const texture = i % 2 === 1 ? 'item-sale' : 'item-not-sale';
+                const saleNumber = numberUtils.getRandomNumberOfRange(0, 2);
+                const texture = saleNumber % 2 === 1 ? 'item-sale' : 'item-not-sale';
                 
                 const x = j * 50;
                 const y = i * 26 + 34;

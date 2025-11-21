@@ -1,7 +1,5 @@
-const gameDataUtils = {
+export default {
     getUsername: function () {
         return 'Cuong';
-    }
-}
-
-export default gameDataUtils;
+    },
+};

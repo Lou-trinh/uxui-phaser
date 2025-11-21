@@ -1,7 +1,6 @@
 import { Scene } from 'phaser';
 import createObjectUtils from "../Utils/CreateObjectUtils.ts";
-import uiUtils from "../Utils/UIUtils.ts";
-
+import userInterfaceUtils from "../Utils/UserInterfaceUtils.ts";
 
 export class Reward extends Scene {
     constructor ()
@@ -29,7 +28,7 @@ export class Reward extends Scene {
     }
 
     createInformationBar() {
-        uiUtils.createInformationBar(this);
+        userInterfaceUtils.createInformationBar(this);
     }
 
     createShopTitle() {
@@ -88,7 +87,4 @@ export class Reward extends Scene {
             createObjectUtils.createImage(this, 80, y + 2.5, 'claim-button', 0.5);
         }
     }
-}
-
-export class ItemPurchase {
 }

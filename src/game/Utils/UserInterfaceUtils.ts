@@ -1,7 +1,7 @@
-import {Scene} from "phaser";
+import { Scene } from "phaser";
 import createObjectUtils from "./CreateObjectUtils.ts";
 
-const uiUtils = {
+export default {
     createInformationBar: function (scene: Scene) {
         createObjectUtils.createImage(scene, 0, 3.25, 'blue-bar-small', 0.5);
         createObjectUtils.createImage(scene, 61, 3.25, 'price-coin-frame', 0.5);
@@ -40,5 +40,3 @@ const uiUtils = {
         coin2Text.setOrigin(0, 0.5);
     }
 }
-
-export default uiUtils;
