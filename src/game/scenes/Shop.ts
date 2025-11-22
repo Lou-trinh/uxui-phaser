@@ -9,6 +9,18 @@ export class Shop extends Scene {
     maskGraphics!: Phaser.GameObjects.Graphics;
     btnCancel!: Phaser.GameObjects.Image;
     btnBuy!: Phaser.GameObjects.Image;
+    titlePurchase!: Phaser.GameObjects.Image;
+    titlePurchaseBox!: Phaser.GameObjects.Image;
+    titleText!: Phaser.GameObjects.Text;
+    ownedText!: Phaser.GameObjects.Text;
+    itemInfo!: Phaser.GameObjects.Image;
+    descriptionText!: Phaser.GameObjects.Text;
+    addIcon!: Phaser.GameObjects.Image;
+    minusIcon!: Phaser.GameObjects.Image;
+    minIcon!: Phaser.GameObjects.Image;
+    maxIcon!: Phaser.GameObjects.Image;
+    costChip!: Phaser.GameObjects.Image;
+    quantityText!: Phaser.GameObjects.Text;
     
     constructor ()
     {
@@ -88,6 +100,11 @@ export class Shop extends Scene {
     createBackgroundPurchase() {
         this.setupBlurOverlay();
         this.setupBackground();
+        this.setupTitleItemPurchase();
+        this.setupItemCharacterBox();
+        this.setupItemInfo();
+        this.setupQuantityControls();
+        this.setupCostChip();
         this.setupCancelBtn();
         this.setupBuyBtn();
     }
@@ -111,6 +128,18 @@ export class Shop extends Scene {
         this.maskGraphics?.destroy();
         this.btnCancel?.destroy();
         this.btnBuy?.destroy();
+        this.titlePurchase?.destroy();
+        this.titlePurchaseBox?.destroy();
+        this.titleText?.destroy();
+        this.ownedText?.destroy();
+        this.itemInfo?.destroy();
+        this.descriptionText?.destroy();
+        this.addIcon?.destroy();
+        this.minusIcon?.destroy();
+        this.minIcon?.destroy();
+        this.maxIcon?.destroy();
+        this.quantityText?.destroy();
+        this.costChip?.destroy();
     }
 
     setupBackground() {
@@ -148,4 +177,108 @@ export class Shop extends Scene {
 
         this.btnBuy.on('pointerdown', () => this.destroyPurchaseUI());
     }
+
+    setupTitleItemPurchase() {
+        this.titlePurchase = createObjectUtils.createImage(this, 50, 23, 'item-purchase', 0.5)
+        .setScale(0.5)
+        .setDepth(12);
+    }
+
+    setupItemCharacterBox() {
+        this.titlePurchaseBox = createObjectUtils.createImage(this, 50, 38, 'item-character-box', 0.5)
+        .setScale(0.5)
+        .setDepth(12);
+
+        // Get camera center for percentage-based positioning
+        const centerX = this.cameras.main.centerX;
+        const centerY = this.cameras.main.centerY;
+
+        // Title text - "Character C Box"
+        this.titleText = this.add.text(centerX, centerY - 200, 'Character C Box', {
+            fontFamily: 'Arial',
+            fontSize: '18px',
+            color: '#2c2c2c',
+            fontStyle: 'bold'
+        }).setOrigin(0.5).setDepth(13);
+
+        // Owned text - "Owned : 2" 
+        this.ownedText = this.add.text(centerX, centerY - 30, 'Owned : 2', {
+            fontFamily: 'Arial',
+            fontSize: '13px',
+            color: '#666666'
+        }).setOrigin(0.5).setDepth(13);
+    }
+
+    setupItemInfo() {
+        this.itemInfo = createObjectUtils.createImage(this, 50, 50, 'item-info', 0.5)
+        .setScale(0.5)
+        .setDepth(12);
+
+        const centerX = this.cameras.main.centerX;
+        const centerY = this.cameras.main.centerY;
+
+        // Description text
+        this.descriptionText = this.add.text(centerX, centerY + 55, 
+            'Lorem ipsum dolor sit amet consectetur. At tortor vitae nec nibh eu\nimperdiet. Lobortis sit maecenas enim enim lobortis maecenas diam\ninteger. Varius vitae urna integer velit donec sapien. Sit nulla leo vel nisi\nvolutpat scelerisque.', 
+            {
+                fontFamily: 'Arial',
+                fontSize: '10px',
+                color: '#666666',
+                align: 'center',
+                lineSpacing: 2,
+                wordWrap: { width: 350 }
+            }
+        ).setOrigin(0.5).setDepth(13);
+    }
+
+    setupQuantityControls() {
+        this.setupMinIcon();
+        this.setupMinusIcon();
+        this.setupQuantityText();
+        this.setupAddIcon();
+        this.setupMaxIcon();
+    }
+
+    setupQuantityText() {
+        const centerX = this.cameras.main.centerX;
+        const centerY = this.cameras.main.centerY;
+
+        this.quantityText = this.add.text(centerX, centerY + 125, '1/2', {
+            fontFamily: 'Arial',
+            fontSize: '16px',
+            color: '#333333',
+            fontStyle: 'bold'
+        }).setOrigin(0.5).setDepth(13);
+    }
+
+    setupAddIcon() {
+        this.addIcon = createObjectUtils.createButton(this, 63, 63, 'add', 0.5)
+        .setScale(0.5)
+        .setDepth(12);
+    }
+    
+    setupMinusIcon() {
+            this.minusIcon = createObjectUtils.createButton(this, 37, 63, 'minus', 0.5)
+            .setScale(0.5)
+            .setDepth(12);
+    }
+
+    setupMinIcon() {
+            this.minIcon = createObjectUtils.createButton(this, 27, 63, 'min', 0.5)
+            .setScale(0.5)
+            .setDepth(12);
+    }
+
+    setupMaxIcon() {
+            this.maxIcon = createObjectUtils.createButton(this, 73, 63, 'max', 0.5)
+            .setScale(0.5)
+            .setDepth(12);
+    }
+
+    setupCostChip() {
+            this.costChip = createObjectUtils.createImage(this, 50, 69, 'cost-chip', 0.5)
+            .setScale(0.5)
+            .setDepth(12);
+    }
+
 }
