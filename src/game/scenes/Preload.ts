@@ -13,6 +13,9 @@ export class Preload extends Scene{
         this.preloadShop();
         this.preloadPlayers();
         this.preloadReward();
+        this.preloadPurchase();
+        this.preloadHeroRecruit();
+        this.preloadBackBtn();
     }
     
     create() {
@@ -21,11 +24,6 @@ export class Preload extends Scene{
     
     preloadCommon() {
         this.load.setPath('assets');
-        this.load.image('add', 'add.png');
-        this.load.image('airdrop', 'airdrop.png');
-        this.load.image('akane', 'akane.png');
-        this.load.image('avatar-player', 'avatar-player.png');
-        this.load.image('back-btn', 'back-btn.png');
         this.load.image('background', 'home.png');
         this.load.image('black-bar', 'black-bar.png');
         this.load.image('blue-bar-small', 'blue-bar-small.png');
@@ -147,12 +145,36 @@ export class Preload extends Scene{
 
         //Bottom buttons
         this.load.image('blue-bar', 'blue-bar.png');
+
+        //Top bar
+        this.load.image('avatar-player', 'avatar-player.png');
+        
+        this.load.setPath('');
+        
+    }
+    
+    preloadBackBtn() {
+        this.load.setPath('assets/backBtn');
+        this.load.image('back-btn', 'back-btn.png');
         this.load.setPath('');
     }
     
     preloadReward() {
         this.load.setPath('assets/reward');
         this.load.image('achievement', 'achievement.png');
+        this.load.image('airdrop', 'airdrop.png');
+        this.load.setPath('');
+    }
+    
+    preloadPurchase() {
+        this.load.setPath('assets/purchase');
+        this.load.image('add', 'add.png');
+        this.load.setPath('');
+    }
+    
+    preloadHeroRecruit() {
+        this.load.setPath('assets/hero-recruit');
+        this.load.image('akane', 'akane.png');
         this.load.setPath('');
     }
 }

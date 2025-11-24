@@ -21,6 +21,7 @@ export class Shop extends Scene {
     maxIcon!: Phaser.GameObjects.Image;
     costChip!: Phaser.GameObjects.Image;
     quantityText!: Phaser.GameObjects.Text;
+    quantityBox!: Phaser.GameObjects.Graphics;
     
     constructor ()
     {
@@ -140,6 +141,7 @@ export class Shop extends Scene {
         this.maxIcon?.destroy();
         this.quantityText?.destroy();
         this.costChip?.destroy();
+        this.quantityBox?.destroy();
     }
 
     setupBackground() {
@@ -233,22 +235,12 @@ export class Shop extends Scene {
 
     setupQuantityControls() {
 
-        const quantityBox = this.add.graphics();
-        const centerX = this.cameras.main.centerX;
-        const centerY = this.cameras.main.centerY + 125;
-
-        quantityBox.fillStyle(0xffffff, 1);
-        quantityBox.lineStyle(1, 0xe0e0e0, 1);
-        quantityBox.fillRoundedRect(centerX - 90, centerY - 17, 180, 34, 6);
-        quantityBox.strokeRoundedRect(centerX - 90, centerY - 17, 180, 34, 6);
-        quantityBox.setDepth(11.5);
-
-
         this.setupMinIcon();
         this.setupMinusIcon();
         this.setupQuantityText();
         this.setupAddIcon();
         this.setupMaxIcon();
+        this.setupFrameQuantityControls();
     }
 
     setupQuantityText() {
@@ -261,6 +253,18 @@ export class Shop extends Scene {
             color: '#333333',
             fontStyle: 'bold'
         }).setOrigin(0.5).setDepth(13);
+    }
+    
+    setupFrameQuantityControls() {
+        const centerX = this.cameras.main.centerX;
+        const centerY = this.cameras.main.centerY + 125;
+        
+        this.quantityBox = this.add.graphics();
+        this.quantityBox.fillStyle(0xffffff, 1);
+        this.quantityBox.lineStyle(1, 0xe0e0e0, 1);
+        this.quantityBox.fillRoundedRect(centerX - 90, centerY - 17, 180, 34, 6);
+        this.quantityBox.strokeRoundedRect(centerX - 90, centerY - 17, 180, 34, 6);
+        this.quantityBox.setDepth(11.5);
     }
 
     setupAddIcon() {
