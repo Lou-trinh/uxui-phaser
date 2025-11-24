@@ -232,6 +232,18 @@ export class Shop extends Scene {
     }
 
     setupQuantityControls() {
+
+        const quantityBox = this.add.graphics();
+        const centerX = this.cameras.main.centerX;
+        const centerY = this.cameras.main.centerY + 125;
+
+        quantityBox.fillStyle(0xffffff, 1);
+        quantityBox.lineStyle(1, 0xe0e0e0, 1);
+        quantityBox.fillRoundedRect(centerX - 90, centerY - 17, 180, 34, 6);
+        quantityBox.strokeRoundedRect(centerX - 90, centerY - 17, 180, 34, 6);
+        quantityBox.setDepth(11.5);
+
+
         this.setupMinIcon();
         this.setupMinusIcon();
         this.setupQuantityText();
@@ -280,5 +292,7 @@ export class Shop extends Scene {
             .setScale(0.5)
             .setDepth(12);
     }
+    
+    
 
 }

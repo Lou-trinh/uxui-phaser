@@ -10,8 +10,8 @@ export class Preload extends Scene{
     preload () {
         this.preloadCommon();
         this.preloadHome();
-        this.preloadHeroRecruit();
         this.preloadShop();
+        this.preloadPlayers();
     }
     
     create() {
@@ -92,6 +92,35 @@ export class Preload extends Scene{
         this.load.image('wallet', 'wallet.png');
         this.load.setPath('');
     }
+    
+    preloadPlayers() {
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-8',
+            'player-8-ui-atlas',
+            'player_8_ui.atlas',
+            'player-8-ui',
+            'player_8_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-10',
+            'player-10-ui-atlas',
+            'player_10_ui.atlas',
+            'player-10-ui',
+            'player_10_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-20',
+            'player-20-ui-atlas',
+            'player_20_ui.atlas',
+            'player-20-ui',
+            'player_20_ui.json'
+        );
+    }
 
     preloadShop() {
         this.load.setPath('assets/shop');
@@ -105,10 +134,6 @@ export class Preload extends Scene{
         this.load.setPath('');
     }
     
-    preloadIconBar() {
-        
-    }
-    
     preloadHome() {
         this.load.setPath('assets/home');
         
@@ -117,28 +142,11 @@ export class Preload extends Scene{
         this.load.image('hero-recruit', 'hero-recruit.png');
         this.load.image('shop', 'shop.png');
         this.load.image('reward', 'reward.png');
+        this.load.image('change-left-btn', 'change-left-btn.png');
+        this.load.image('change-right-btn', 'change-right-btn.png');
 
         //Bottom buttons
         this.load.image('blue-bar', 'blue-bar.png');
-        
-        PreloadUtils.preloadPlayer(
-            this,
-            'player-10',
-            'player-10-ui-atlas',
-            'player_10_ui.atlas',
-            'player-10-ui',
-            'player_10_ui.json'
-        );
     }
     
-    preloadHeroRecruit() {
-        PreloadUtils.preloadPlayer(
-            this,
-            'player-8',
-            'player-8-ui-atlas',
-            'player_8_ui.atlas',
-            'player-8-ui',
-            'player_8_ui.json'
-        );
-    }
 }

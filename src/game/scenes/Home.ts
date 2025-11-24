@@ -2,9 +2,14 @@ import { Scene } from 'phaser';
 import { EventBus } from '../EventBus';
 import createObjectUtils from "../Utils/CreateObjectUtils.ts";
 import gameDataUtils from "../Utils/GameDataUtils.ts";
+import {SpineGameObject} from "@esotericsoftware/spine-phaser-v3";
 
 export class Home extends Scene
 {
+    characterCount = 3;
+    characterIndex: integer = 0;
+    arrCharacter: SpineGameObject[] = [];
+    
     constructor ()
     {
         super('Home');
@@ -25,6 +30,7 @@ export class Home extends Scene
         this.createGift();
         this.createChangeCharacter();
         this.createFrameNotice();
+        this.updateCharacterByIndex();
         
         EventBus.emit('current-scene-ready', this);
     }
@@ -62,15 +68,43 @@ export class Home extends Scene
     }
 
     createCharacter () {
-        createObjectUtils.createSpine(
-            this, 
-            'player-10-ui', 
-            'player-10-ui-atlas', 
-            50, 
-            70, 
-            0.5, 
-            'default', 
-            'idle'
+        this.arrCharacter.push(
+            createObjectUtils.createSpine(
+                this,
+                'player-10-ui',
+                'player-10-ui-atlas',
+                50,
+                70,
+                0.5,
+                'default',
+                'idle'
+            )
+        );
+
+        this.arrCharacter.push(
+            createObjectUtils.createSpine(
+                this,
+                'player-20-ui',
+                'player-20-ui-atlas',
+                50,
+                70,
+                0.5,
+                'default',
+                'idle'
+            )
+        );
+
+        this.arrCharacter.push(
+            createObjectUtils.createSpine(
+                this,
+                'player-8-ui',
+                'player-8-ui-atlas',
+                50,
+                70,
+                0.5,
+                'default',
+                'idle'
+            )
         )
     }
 
@@ -165,7 +199,31 @@ export class Home extends Scene
     }
     
     createChangeCharacter() {
-        createObjectUtils.createButton(this, 0, 50, 'change-character', 0.5);
+        const previousBtn: Phaser.GameObjects.Image = createObjectUtils.createButton(this, 3, 50, 'change-left-btn', 0.5);
+        
+        previousBtn.on('pointerdown', () => {
+            this.characterIndex = this.characterIndex <= 0 ? this.characterCount - 1 : this.characterIndex - 1;
+            this.updateCharacterByIndex();
+        })
+        
+        const nextBtn: Phaser.GameObjects.Image = createObjectUtils.createButton(this, 97, 50, 'change-right-btn', 0.5);
+
+        nextBtn.on('pointerdown', () => {
+            this.characterIndex = this.characterIndex >= this.characterCount - 1 
+                ? 0
+                : this.characterIndex + 1;
+            
+            this.updateCharacterByIndex();
+        })
+    }
+    
+    updateCharacterByIndex() {
+        console.log(this.arrCharacter[this.characterIndex])
+        this.arrCharacter.forEach((spine: SpineGameObject) => {
+            spine.setVisible(false);
+        });
+
+        this.arrCharacter[this.characterIndex].setVisible(true);
     }
 
     createFrameNotice() {
