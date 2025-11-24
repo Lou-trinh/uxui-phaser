@@ -12,6 +12,7 @@ export class Preload extends Scene{
         this.preloadHome();
         this.preloadShop();
         this.preloadPlayers();
+        this.preloadReward();
     }
     
     create() {
@@ -20,7 +21,6 @@ export class Preload extends Scene{
     
     preloadCommon() {
         this.load.setPath('assets');
-        this.load.image('achievement', 'achievement.png');
         this.load.image('add', 'add.png');
         this.load.image('airdrop', 'airdrop.png');
         this.load.image('akane', 'akane.png');
@@ -147,6 +147,12 @@ export class Preload extends Scene{
 
         //Bottom buttons
         this.load.image('blue-bar', 'blue-bar.png');
+        this.load.setPath('');
     }
     
+    preloadReward() {
+        this.load.setPath('assets/reward');
+        this.load.image('achievement', 'achievement.png');
+        this.load.setPath('');
+    }
 }

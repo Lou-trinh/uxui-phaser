@@ -21,6 +21,8 @@ export class Home extends Scene
 
     create ()
     {
+        this.arrCharacter = [];
+        
         this.createBackground();
         this.createCharacter();
         this.createMiddleButtons();
@@ -34,7 +36,7 @@ export class Home extends Scene
         
         EventBus.emit('current-scene-ready', this);
     }
-    
+
     createMiddleButtons () {
         createObjectUtils.createButton(this, 100, 76, 'battle', 0.5);
         const characterBtn = createObjectUtils.createButton(this, 0, 76, 'hero-recruit', 0.5);
@@ -218,7 +220,6 @@ export class Home extends Scene
     }
     
     updateCharacterByIndex() {
-        console.log(this.arrCharacter[this.characterIndex])
         this.arrCharacter.forEach((spine: SpineGameObject) => {
             spine.setVisible(false);
         });
