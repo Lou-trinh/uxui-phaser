@@ -27,12 +27,7 @@ export class Preload extends Scene{
         this.load.setPath('assets');
         this.load.image('background', 'home.png');
         this.load.image('frame-star', 'frame-star.png');
-        this.load.image('name-character-frame', 'name-character-frame.png');
-        this.load.image('notice-icon', 'notice-icon.png');
-        this.load.image('price-coin-frame', 'price-coin-frame.png');
-        this.load.image('rarity', 'rarity.png');
         this.load.image('sell', 'sell.png');
-        this.load.image('shop-title', 'shop-title.png');
         this.load.image('sound-icon', 'sound-icon.png');
         this.load.image('star', 'star.png');
         this.load.image('subtract', 'subtract.png');
@@ -89,6 +84,7 @@ export class Preload extends Scene{
         this.load.image('icon-dark-bar-3', 'icon-dark-bar-3.png');
         this.load.image('icon-dark-bar-4', 'icon-dark-bar-4.png');
         this.load.image('icon-dark-bar-5', 'icon-dark-bar-5.png');
+        this.load.image('shop-title', 'shop-title.png');
         this.load.setPath('');
     }
     
@@ -116,10 +112,12 @@ export class Preload extends Scene{
         this.load.image('coin-2', 'coin-2.png');
         this.load.image('icon-copy', 'icon-copy.png');
         this.load.image('id-frame', 'id-frame.png');
+        this.load.image('price-coin-frame', 'price-coin-frame.png');
         
         //Notice bar
         this.load.image('gift', 'gift.png');
         this.load.image('lib-icon', 'lib-icon.png');
+        this.load.image('notice-icon', 'notice-icon.png');
         
         this.load.setPath('');
         
@@ -172,6 +170,7 @@ export class Preload extends Scene{
         this.load.image('level-character', 'level-character.png');
         this.load.image('level-up', 'level-up.png');
         this.load.image('mint', 'mint.png');
+        this.load.image('name-character-frame', 'name-character-frame.png');
         this.load.setPath('');
     }
     
@@ -179,6 +178,7 @@ export class Preload extends Scene{
         this.load.setPath('assets/inventory');
         this.load.image('character-pieces', 'character-pieces.png');
         this.load.image('inventory-title', 'inventory-title.png');
+        this.load.image('rarity', 'rarity.png');
         this.load.setPath('');
     }
 }
