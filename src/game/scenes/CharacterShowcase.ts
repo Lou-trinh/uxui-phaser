@@ -144,7 +144,11 @@ export class CharacterShowcase extends Scene {
         createObjectUtils.createImage(this, 29, 80, 'circle1', 0.5);
         createObjectUtils.createImage(this, 29, 80, 'circle2', 0.5);
         createObjectUtils.createImage(this, 29, 80, 'circle3', 0.5);
-        createObjectUtils.createButton(this, 29, 72, 'level-up', 0.5);
+        const levelUpBtn = createObjectUtils.createButton(this, 29, 72, 'level-up', 0.5);
+        levelUpBtn.on('pointerdown', () => {
+            this.scene.start('Character');
+        });
+        
         createObjectUtils.createButton(this, 14, 80, 'up-grade', 0.5);
         createObjectUtils.createButton(this, 44, 80, 'extract', 0.5);
         createObjectUtils.createButton(this, 29, 88, 'mint', 0.5);
