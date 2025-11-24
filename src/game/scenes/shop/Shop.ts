@@ -1,7 +1,7 @@
 import { Scene } from 'phaser';
-import createObjectUtils from "../Utils/CreateObjectUtils.ts";
-import userIntefaceUtils from "../Utils/UserInterfaceUtils.ts";
-import numberUtils from "../Utils/NumberUtils.ts";
+import createObjectUtils from "../../Utils/CreateObjectUtils.ts";
+import userInterfaceUtils from "../interface/UserInterface.ts";
+import numberUtils from "../../Utils/NumberUtils.ts";
 
 export class Shop extends Scene {
     blurOverlay!: Phaser.GameObjects.Rectangle;
@@ -50,7 +50,7 @@ export class Shop extends Scene {
     }
 
     createInformationBar() {
-        userIntefaceUtils.createInformationBar(this);
+        userInterfaceUtils.createInformationBar(this);
     }
     
     createShopTitle() {

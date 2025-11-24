@@ -1,6 +1,6 @@
 import { Scene } from 'phaser';
 import createObjectUtils from "../Utils/CreateObjectUtils.ts";
-import uiUtils from "../Utils/UserInterfaceUtils.ts";
+import userInterface from "./interface/UserInterface.ts";
 
 
 export class Inventory extends Scene {
@@ -31,7 +31,7 @@ export class Inventory extends Scene {
     }
 
     createInformationBar () {
-        uiUtils.createInformationBar(this);
+        userInterface.createInformationBar(this);
     }
 
     createInventoryTitle() {

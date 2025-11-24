@@ -1,5 +1,5 @@
 import { Scene } from "phaser";
-import createObjectUtils from "./CreateObjectUtils.ts";
+import createObjectUtils from "../../Utils/CreateObjectUtils.ts";
 
 export default {
     createInformationBar: function (scene: Scene) {

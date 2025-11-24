@@ -1,6 +1,6 @@
 import { Scene } from 'phaser';
 import createObjectUtils from "../Utils/CreateObjectUtils.ts";
-import userInterfaceUtils from "../Utils/UserInterfaceUtils.ts";
+import userInterface from "./interface/UserInterface.ts";
 
 export class Reward extends Scene {
     constructor ()
@@ -28,7 +28,7 @@ export class Reward extends Scene {
     }
 
     createInformationBar() {
-        userInterfaceUtils.createInformationBar(this);
+        userInterface.createInformationBar(this);
     }
 
     createShopTitle() {
