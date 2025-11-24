@@ -27,9 +27,7 @@ export class Preload extends Scene{
         this.load.image('avatar-player', 'avatar-player.png');
         this.load.image('back-btn', 'back-btn.png');
         this.load.image('background', 'home.png');
-        this.load.image('battle', 'battle.png');
         this.load.image('black-bar', 'black-bar.png');
-        this.load.image('blue-bar', 'blue-bar.png');
         this.load.image('blue-bar-small', 'blue-bar-small.png');
         this.load.image('broken-line', 'broken-line.png');
         this.load.image('change-character', 'change-character.png');
@@ -53,7 +51,6 @@ export class Preload extends Scene{
         this.load.image('go-button', 'go-button.png');
         this.load.image('guild', 'guild.png');
         this.load.image('gunner', 'gunner.png');
-        this.load.image('hero-recruit', 'hero-recruit.png');
         this.load.image('icon-copy', 'icon-copy.png');
         this.load.image('icon-dark-bar-1', 'icon-dark-bar-1.png');
         this.load.image('icon-dark-bar-11', 'icon-dark-bar-11.png');
@@ -83,9 +80,7 @@ export class Preload extends Scene{
         this.load.image('notice-icon', 'notice-icon.png');
         this.load.image('price-coin-frame', 'price-coin-frame.png');
         this.load.image('rarity', 'rarity.png');
-        this.load.image('reward', 'reward.png');
         this.load.image('sell', 'sell.png');
-        this.load.image('shop', 'shop.png');
         this.load.image('shop-title', 'shop-title.png');
         this.load.image('sound-icon', 'sound-icon.png');
         this.load.image('star', 'star.png');
@@ -115,6 +110,17 @@ export class Preload extends Scene{
     }
     
     preloadHome() {
+        this.load.setPath('assets/home');
+        
+        //middle buttons
+        this.load.image('battle', 'battle.png');
+        this.load.image('hero-recruit', 'hero-recruit.png');
+        this.load.image('shop', 'shop.png');
+        this.load.image('reward', 'reward.png');
+
+        //Bottom buttons
+        this.load.image('blue-bar', 'blue-bar.png');
+        
         PreloadUtils.preloadPlayer(
             this,
             'player-10',

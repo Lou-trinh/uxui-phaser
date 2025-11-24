@@ -52,6 +52,7 @@ export class Home extends Scene
         createObjectUtils.createImage(this, 50, 95, 'blue-bar', 0.5);
         createObjectUtils.createButton(this, 14, 94, 'team', 0.5);
         createObjectUtils.createButton(this, 38, 94, 'guild', 0.5);
+        
         const inventoryBtn = createObjectUtils.createButton(this, 62, 94, 'inventory', 0.5);
         createObjectUtils.createButton(this, 86, 94, 'wallet', 0.5);
 
@@ -164,7 +165,7 @@ export class Home extends Scene
     }
     
     createChangeCharacter() {
-        createObjectUtils.createButton(this, 50, 50, 'change-character', 0.5);
+        createObjectUtils.createButton(this, 0, 50, 'change-character', 0.5);
     }
 
     createFrameNotice() {

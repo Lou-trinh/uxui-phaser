@@ -12,7 +12,7 @@ export default {
         createObjectUtils.createImage(scene, 70, 3.25, 'subtract', 0.5);
 
         // Thêm text số coin 1
-        const coin1Text = scene.add.text(
+        const coin1Text: Phaser.GameObjects.Text = scene.add.text(
             scene.scale.width * 0.82,
             scene.scale.height * 0.032,
             '120000',
@@ -26,7 +26,7 @@ export default {
         coin1Text.setOrigin(0, 0.5);
 
         // Thêm text số coin 2
-        const coin2Text = scene.add.text(
+        const coin2Text: Phaser.GameObjects.Text = scene.add.text(
             scene.scale.width * 0.57,
             scene.scale.height * 0.032,
             '120000',

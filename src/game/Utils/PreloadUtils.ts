@@ -8,7 +8,7 @@ export default {
         atlasUrl: string,
         dataKey: string,
         dataUrl: string
-    ) {
+    ): void {
         scene.load.setPath(BaseUrl);
         scene.load.spineAtlas(atlasKey, atlasUrl);
         scene.load.spineJson(dataKey, dataUrl);
@@ -22,8 +22,8 @@ export default {
         atlasUrl: string,
         dataKey: string,
         dataUrl: string
-    ) {
-        const url = `assets/players/${PlayerUrl}/`;
+    ): void {
+        const url: string = `assets/players/${PlayerUrl}/`;
         this.preloadSpine(scene, url, atlasKey, atlasUrl, dataKey, dataUrl);
     }
 }
