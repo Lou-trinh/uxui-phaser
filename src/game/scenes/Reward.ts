@@ -13,7 +13,7 @@ export class Reward extends Scene {
 
     create() {
         this.createInformationBar();
-        this.createShopTitle();
+        this.createRewardTitle();
         this.createBackButton();
         this.createContentFrame();
         this.createFrameAchievement();
@@ -31,8 +31,8 @@ export class Reward extends Scene {
         userInterface.createInformationBar(this);
     }
 
-    createShopTitle() {
-        createObjectUtils.createImage(this, 100, 8, 'shop-title', 0.5);
+    createRewardTitle() {
+        createObjectUtils.createImage(this, 100, 8, 'reward-title', 0.5);
     }
 
     createContentFrame() {

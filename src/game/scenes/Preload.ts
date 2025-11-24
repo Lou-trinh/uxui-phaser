@@ -139,6 +139,7 @@ export class Preload extends Scene{
         this.load.image('go-button', 'go-button.png');
         this.load.image('items', 'items.png');
         this.load.image('mission', 'mission.png');
+        this.load.image('reward-title', 'reward-title.png');
         this.load.setPath('');
     }
     
