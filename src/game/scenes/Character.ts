@@ -10,14 +10,9 @@ export class Character extends Scene
         super('Character');
     }
 
-    preload ()
-    {
-    }
-
     create ()
     {
         this.createBackground();
-        this.createNoticeBar();
         this.createInformationBar();
         this.createFrameNotice();
         this.createBackButton();
@@ -44,10 +39,6 @@ export class Character extends Scene
         shopBtn.on('pointerdown', () => {
             this.scene.start('CharacterShowcase');
         });
-    }
-
-    createNoticeBar () {
-        createObjectUtils.createImage(this, 0, 4, 'black-bar', 0.5);
     }
 
     createInformationBar () {

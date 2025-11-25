@@ -122,9 +122,33 @@ export class Home extends Scene
             0.4
         );
     }
-    
+
     createNoticeBar () {
         createObjectUtils.createImage(this, 0, 4, 'black-bar', 0.5);
+        
+        const noticeText = this.add.text(
+            this.scale.width,
+            this.scale.height * 0.04,
+            'Welcome to m-sci',
+            {
+                fontFamily: 'Arial Narrow, Arial, sans-serif',
+                fontSize: '18px',
+                color: '#ffffff',
+                fontStyle: 'bold'
+            }
+        );
+        noticeText.setOrigin(0, 0.5);
+
+        this.tweens.add({
+            targets: noticeText,
+            x: -noticeText.width, 
+            duration: 11000,
+            ease: 'Linear',
+            repeat: -1,
+            onRepeat: () => {
+                noticeText.x = this.scale.width;
+            }
+        });
     }
 
     createInformationBar () {
