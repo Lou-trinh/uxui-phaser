@@ -17,6 +17,7 @@ export class Preload extends Scene{
         this.preloadBackBtn();
         this.preloadInventory();
         this.preloadBackground();
+        this.preloadCharacter();
     }
     
     create() {
@@ -180,6 +181,22 @@ export class Preload extends Scene{
         this.load.image('inventory-title', 'inventory-title.png');
         this.load.image('rarity', 'rarity.png');
         this.load.image('trunk-pieces', 'trunk-pieces.png');
+        this.load.setPath('');
+    }
+    
+    preloadCharacter() {
+        this.load.setPath('assets/character');
+        this.load.image('level-a', 'level-a.png');
+        this.load.image('level-b', 'level-b.png');
+        this.load.image('level-c', 'level-c.png');
+        this.load.image('level-s', 'level-s.png');
+        this.load.image('level-ss', 'level-ss.png');
+        this.load.image('icon-show', 'icon-show.png');
+        this.load.image('star-1', 'star-1.png');
+        this.load.image('star-2', 'star-2.png');
+        this.load.image('star-3', 'star-3.png');
+        this.load.image('star-4', 'star-4.png');
+        this.load.image('background-character', 'background-character.png');
         this.load.setPath('');
     }
 }
