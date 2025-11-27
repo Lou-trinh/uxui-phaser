@@ -18,6 +18,7 @@ export class Preload extends Scene{
         this.preloadInventory();
         this.preloadBackground();
         this.preloadCharacter();
+        this.preloadPlayersCard();
     }
     
     create() {
@@ -27,11 +28,92 @@ export class Preload extends Scene{
     preloadPlayers() {
         PreloadUtils.preloadPlayer(
             this,
+            'player-0',
+            'player-0-ui-atlas',
+            'player_0_ui.atlas',
+            'player-0-ui',
+            'player_0_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-1',
+            'player-1-ui-atlas',
+            'player_1_ui.atlas',
+            'player-1-ui',
+            'player_1_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-2',
+            'player-2-ui-atlas',
+            'player_2_ui.atlas',
+            'player-2-ui',
+            'player_2_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-3',
+            'player-3-ui-atlas',
+            'player_3_ui.atlas',
+            'player-3-ui',
+            'player_3_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-4',
+            'player-4-ui-atlas',
+            'player_4_ui.atlas',
+            'player-4-ui',
+            'player_4_ui.json'
+        );
+        
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-5',
+            'player-5-ui-atlas',
+            'player_5_ui.atlas',
+            'player-5-ui',
+            'player_5_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-6',
+            'player-6-ui-atlas',
+            'player_6_ui.atlas',
+            'player-6-ui',
+            'player_6_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-7',
+            'player-7-ui-atlas',
+            'player_7_ui.atlas',
+            'player-7-ui',
+            'player_7_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
             'player-8',
             'player-8-ui-atlas',
             'player_8_ui.atlas',
             'player-8-ui',
             'player_8_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-9',
+            'player-9-ui-atlas',
+            'player_9_ui.atlas',
+            'player-9-ui',
+            'player_9_ui.json'
         );
 
         PreloadUtils.preloadPlayer(
@@ -45,12 +127,138 @@ export class Preload extends Scene{
 
         PreloadUtils.preloadPlayer(
             this,
+            'player-11',
+            'player-11-ui-atlas',
+            'player_11_ui.atlas',
+            'player-11-ui',
+            'player_11_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-12',
+            'player-12-ui-atlas',
+            'player_12_ui.atlas',
+            'player-12-ui',
+            'player_12_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-13',
+            'player-13-ui-atlas',
+            'player_13_ui.atlas',
+            'player-13-ui',
+            'player_13_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-14',
+            'player-14-ui-atlas',
+            'player_14_ui.atlas',
+            'player-14-ui',
+            'player_14_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-16',
+            'player-16-ui-atlas',
+            'player_16_ui.atlas',
+            'player-16-ui',
+            'player_16_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
             'player-20',
             'player-20-ui-atlas',
             'player_20_ui.atlas',
             'player-20-ui',
             'player_20_ui.json'
         );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-21',
+            'player-21-ui-atlas',
+            'player_21_ui.atlas',
+            'player-21-ui',
+            'player_21_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-23',
+            'player-23-ui-atlas',
+            'player_23_ui.atlas',
+            'player-23-ui',
+            'player_23_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-24',
+            'player-24-ui-atlas',
+            'player_24_ui.atlas',
+            'player-24-ui',
+            'player_24_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-28',
+            'player-28-ui-atlas',
+            'player_28_ui.atlas',
+            'player-28-ui',
+            'player_28_ui.json'
+        );
+    }
+
+    preloadPlayersCard() {
+        const cardNames: Record<number, string> = {
+            0: 'anna_ui_card',
+            1: 'davidsc_ui_card',
+            2: 'david_2_ui_card',
+            3: 'marcussc_ui_card',
+            4: 'julia_ui_card',
+            5: 'henry_ui_card',
+            6: 'fiona_ui_card',
+            7: 'alexandra_ui_card',
+            8: 'elizabeth_ui_card',
+            9: 'victoria_ui_card',
+            10: 'akane_ui_card',
+            11: 'alice_ui_card',
+            12: 'victoriasa_ui_card',
+            13: 'caitlyn_ui_card',
+            14: 'henrysc_ui_card',
+            16: 'annasb_ui_card',
+            20: 'juliasb_ui_card',
+            21: 'fionasb_ui_card',
+            23: 'elizabethsa_ui_card',
+            24: 'alexandrasa_ui_card',
+            28: 'marcussc_ui_card'
+        };
+
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 20, 21, 23, 24, 28]
+            .forEach(id => {
+                PreloadUtils.preloadPlayer(
+                    this,
+                    `player-${id}`,
+                    `player-${id}-ui-atlas`,
+                    `player_${id}_ui.atlas`,
+                    `player-${id}-ui`,
+                    `player_${id}_ui.json`
+                );
+
+                // Chỉ load card nếu có trong danh sách
+                if (cardNames[id]) {
+                    this.load.setPath(`assets/players/player-${id}`);
+                    this.load.image(cardNames[id], `${cardNames[id]}.png`);
+                    this.load.setPath('');
+                }
+            });
     }
     
     preloadBackground() {
@@ -197,6 +405,16 @@ export class Preload extends Scene{
         this.load.image('star-3', 'star-3.png');
         this.load.image('star-4', 'star-4.png');
         this.load.image('background-character', 'background-character.png');
+        this.load.image('frame-figure', 'frame-figure.png');
+        this.load.image('character-title', 'character-title.png');
+        this.load.image('level', 'level.png');
+        this.load.image('bottom-frame-black', 'bottom-frame-black.png');
+        this.load.image('bottom-frame-blue', 'bottom-frame-blue.png');
+        this.load.image('bottom-frame-1', 'bottom-frame-1.png');
+        this.load.image('panels-black', 'panels-black.png');
+        this.load.image('panels-yellow', 'panels-yellow.png');
+        this.load.image('panels-red', 'panels-red.png');
+        this.load.image('panels-blue', 'panels-blue.png');
         this.load.setPath('');
     }
 }

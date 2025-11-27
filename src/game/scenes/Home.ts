@@ -73,8 +73,8 @@ export class Home extends Scene
         this.arrCharacter.push(
             createObjectUtils.createSpine(
                 this,
-                'player-10-ui',
-                'player-10-ui-atlas',
+                'player-7-ui',
+                'player-7-ui-atlas',
                 50,
                 70,
                 0.5,
@@ -86,8 +86,8 @@ export class Home extends Scene
         this.arrCharacter.push(
             createObjectUtils.createSpine(
                 this,
-                'player-20-ui',
-                'player-20-ui-atlas',
+                'player-12-ui',
+                'player-12-ui-atlas',
                 50,
                 70,
                 0.5,
@@ -99,8 +99,8 @@ export class Home extends Scene
         this.arrCharacter.push(
             createObjectUtils.createSpine(
                 this,
-                'player-8-ui',
-                'player-8-ui-atlas',
+                'player-13-ui',
+                'player-13-ui-atlas',
                 50,
                 70,
                 0.5,

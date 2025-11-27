@@ -17,6 +17,8 @@ export class Character extends Scene
         this.createFrameNotice();
         this.createBackButton();
         this.createFrameLevel();
+        this.createFrameFigure();
+        this.createTitleCharacter();
 
         EventBus.emit('current-scene-ready', this);
     }
@@ -40,6 +42,10 @@ export class Character extends Scene
         shopBtn.on('pointerdown', () => {
             this.scene.start('CharacterShowcase');
         });
+    }
+    
+    createTitleCharacter() {
+        createObjectUtils.createImage(this, 81, 15, 'character-title', 0.5);
     }
 
     createInformationBar2() {
@@ -70,5 +76,18 @@ export class Character extends Scene
         createObjectUtils.createButton(this, 63, 22, 'star-2', 0.5);
         createObjectUtils.createButton(this, 75, 22, 'star-3', 0.5);
         createObjectUtils.createButton(this, 90, 22, 'star-4', 0.5);
+    }
+
+    createFrameFigure() {
+        for (let i = 0; i < 9; i++) {
+            const x = 18 + (i % 3) * 32;
+            const y = 38 + Math.floor(i / 3) * 24;
+            createObjectUtils.createImage(this, x, y, 'frame-figure', 0.5);
+            createObjectUtils.createImage(this, x, y, 'fiona_ui_card', 0.5);
+            createObjectUtils.createImage(this, x, y + 9, 'bottom-frame-1', 0.5);
+            createObjectUtils.createImage(this, x, y + 6.9, 'panels-blue', 0.5);
+            createObjectUtils.createImage(this, x - 10.5, y + 7.2, 'level', 0.5);
+            createObjectUtils.createImage(this, x, y + 9.48, 'bottom-frame-blue', 0.5);
+        }
     }
 }

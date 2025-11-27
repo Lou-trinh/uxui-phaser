@@ -41,7 +41,7 @@ router.beforeEach((
     _, 
     next: NavigationGuardNext
 ): void => {
-    const loginStatus = false;
+    const loginStatus = true;
     
     document.title = (to.meta?.title as string) ?? 'MSCI';
     
