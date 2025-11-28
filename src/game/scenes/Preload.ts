@@ -410,11 +410,14 @@ export class Preload extends Scene{
         this.load.image('level', 'level.png');
         this.load.image('bottom-frame-black', 'bottom-frame-black.png');
         this.load.image('bottom-frame-blue', 'bottom-frame-blue.png');
-        this.load.image('bottom-frame-1', 'bottom-frame-1.png');
-        this.load.image('panels-black', 'panels-black.png');
+        this.load.image('bottom-frame-blue-1', 'bottom-frame-blue-1.png');
+        this.load.image('panels-gray', 'panels-gray.png');
         this.load.image('panels-yellow', 'panels-yellow.png');
         this.load.image('panels-red', 'panels-red.png');
         this.load.image('panels-blue', 'panels-blue.png');
+        this.load.image('icon-sniper-blue', 'icon-sniper-blue.png');
+        this.load.image('yellow-star', 'yellow-star.png');
+        this.load.image('name-fiona', 'name-fiona.png');
         this.load.setPath('');
     }
 }
