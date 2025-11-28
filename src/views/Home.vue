@@ -5,7 +5,9 @@ import WebLayer from "../components/WebLayer.vue";
 
 <template>
     <WebLayer>
-        <RouterLink class="hover:text-blue-300" to="/game">Play</RouterLink>
+        <RouterLink class="hover:text-blue-300" :to="{
+            name: 'game',
+        }">Play</RouterLink>
     </WebLayer>
 </template>
 
