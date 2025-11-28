@@ -79,21 +79,21 @@ export class Character extends Scene
     }
 
     createFrameFigure() {
-        for (let i = 0; i < 9; i++) {
-            const x = 18 + (i % 3) * 32;
-            const y = 38 + Math.floor(i / 3) * 24;
-            createObjectUtils.createImage(this, x, y, 'frame-figure', 0.5);
-            createObjectUtils.createImage(this, x, y, 'fiona_ui_card', 0.5);
-            createObjectUtils.createImage(this, x, y + 6.9, 'panels-blue', 0.5);
-            createObjectUtils.createImage(this, x + 8.8, y + 6.3, 'icon-sniper-blue', 0.5);
-            createObjectUtils.createImage(this, x, y + 9, 'bottom-frame-blue-1', 0.5);
-            createObjectUtils.createImage(this, x + 3.5, y + 8.5, 'yellow-star', 0.5);
-            createObjectUtils.createImage(this, x + 6.5, y + 8.5, 'yellow-star', 0.5);
-            createObjectUtils.createImage(this, x + 9.5, y + 8.5, 'yellow-star', 0.5);
-            createObjectUtils.createImage(this, x + 12.5, y + 8.5, 'yellow-star', 0.5);
-            createObjectUtils.createImage(this, x - 10.5, y + 7.2, 'level', 0.5);
-            createObjectUtils.createImage(this, x, y + 9.48, 'bottom-frame-blue', 0.5);
-            createObjectUtils.createImage(this, x, y + 11.5, 'name-fiona', 0.5);
-        }
+        const x = 18;
+        const y = 38;
+
+        createObjectUtils.createImage(this, x, y, 'frame-figure', 0.5);
+        createObjectUtils.createImage(this, x, y, 'fiona_ui_card', 0.5);
+        createObjectUtils.createImage(this, x, y + 6.9, 'panels-blue', 0.5);
+        createObjectUtils.createImage(this, x + 8.8, y + 6.3, 'icon-sniper-blue', 0.5);
+        createObjectUtils.createImage(this, x, y + 9, 'bottom-frame-blue-1', 0.5);
+
+        [3.5, 6.5, 9.5, 12.5].forEach(offset => {
+            createObjectUtils.createImage(this, x + offset, y + 8.5, 'yellow-star', 0.5);
+        });
+
+        createObjectUtils.createImage(this, x - 10.5, y + 7.2, 'level', 0.5);
+        createObjectUtils.createImage(this, x, y + 9.48, 'bottom-frame-blue', 0.5);
+        createObjectUtils.createImage(this, x, y + 11.5, 'name-fiona', 0.5);
     }
 }
