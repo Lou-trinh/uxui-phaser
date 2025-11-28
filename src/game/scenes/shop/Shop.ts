@@ -1,7 +1,7 @@
 import { Scene } from 'phaser';
 import createObjectUtils from "../../Utils/CreateObjectUtils.ts";
 import userInterfaceUtils from "../interface/UserInterface.ts";
-import numberUtils from "../../Utils/NumberUtils.ts";
+// import numberUtils from "../../Utils/NumberUtils.ts";
 
 export class Shop extends Scene {
     blurOverlay!: Phaser.GameObjects.Rectangle;
@@ -90,57 +90,62 @@ export class Shop extends Scene {
     }
 
     createScrollableItemBox() {
-        // this.scrollContainer = this.add.container(0, 0);
-        //
-        // const count: number = 11;
+        this.scrollContainer = this.add.container(0, 0);
+
+        const count = 11;
+        const cols = 3;
+        const numRow = Math.ceil(count / cols);
+
+        const screenWidth = this.cameras.main.width;
+        const screenHeight = this.cameras.main.height;
+
+        const colSpacing = 33;      // 33% màn hình giữa các cột
+        const colOffset = 17;       // 17% offset từ lề
+        const rowSpacing = 26;      // 26% màn hình giữa các hàng
+        const startY = 34;          // 34% từ trên xuống
+        const visibleArea = 60;     // 60% chiều cao nhìn thấy
+
+        // Tạo items
+        for (let i = 0; i < count; i++) {
+            const row = Math.floor(i / cols);
+            const col = i % cols;
+
+            const texture = Math.random() > 0.5 ? 'item-sale' : 'item-not-sale';
+
+            const x = screenWidth * (col * colSpacing + colOffset) / 100;
+            const y = row * screenHeight * rowSpacing / 100 + screenHeight * startY / 100;
+
+            const itemBtn = createObjectUtils.createButton(this, 0, 0, texture, 0.5)
+                .setPosition(x, y)
+                .on('pointerdown', () => {
+                    if (!this.isDragging) this.createBackgroundPurchase();
+                });
+
+            this.scrollContainer.add(itemBtn);
+        }
+
+        // Setup scroll
+        const containerHeight = numRow * screenHeight * rowSpacing / 100;
+        const visibleHeight = screenHeight * visibleArea / 100;
+        this.maxScrollY = Math.max(0, containerHeight - visibleHeight);
+
+        this.setupScrollMask();
+        this.setupScrollEvents();
+        // const count: number = 9;
         // let numRow = Math.ceil(count / 3);
         //
         // for (let i = 0; i < numRow; i++) {
-        //     for (let j = 0; j < 3; j++) {    
-        //         const index = i * 3 + j;
-        //         if (index >= count) break;
-        //
+        //     for (let j = 0; j < 3; j++) {
         //         const saleNumber = numberUtils.getRandomNumberOfRange(0, 2);
         //         const texture = saleNumber % 2 === 1 ? 'item-sale' : 'item-not-sale';
         //
-        //         const x = this.cameras.main.width * (j * 0.33 + 0.167);
-        //         const y = i * (this.cameras.main.height * 0.26) + (this.cameras.main.height * 0.34);
+        //         const x = j * 50;
+        //         const y = i * 26 + 34;
+        //         const itemBtn = createObjectUtils.createButton(this, x, y, texture, 0.5);
         //
-        //         const itemBtn = createObjectUtils.createButton(this, 0, 0, texture, 0.5);
-        //         itemBtn.setPosition(x, y);
-        //
-        //         itemBtn.on('pointerdown', () => {
-        //             if (!this.isDragging) {
-        //                 this.createBackgroundPurchase();
-        //             }
-        //         });
-        //
-        //         this.scrollContainer.add(itemBtn);
+        //         itemBtn.on('pointerdown', () => this.createBackgroundPurchase());
         //     }
         // }
-        //
-        // const containerHeight = numRow * (this.cameras.main.height * 0.26);
-        // const visibleHeight = this.cameras.main.height * 0.6;
-        // this.maxScrollY = Math.max(0, containerHeight - visibleHeight);
-        //
-        // this.setupScrollMask();
-        //
-        // this.setupScrollEvents();
-        const count: number = 9;
-        let numRow = Math.ceil(count / 3);
-
-        for (let i = 0; i < numRow; i++) {
-            for (let j = 0; j < 3; j++) {
-                const saleNumber = numberUtils.getRandomNumberOfRange(0, 2);
-                const texture = saleNumber % 2 === 1 ? 'item-sale' : 'item-not-sale';
-
-                const x = j * 50;
-                const y = i * 26 + 34;
-                const itemBtn = createObjectUtils.createButton(this, x, y, texture, 0.5);
-
-                itemBtn.on('pointerdown', () => this.createBackgroundPurchase());
-            }
-        }
     }
 
     setupScrollMask() {
