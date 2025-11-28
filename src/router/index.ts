@@ -1,7 +1,8 @@
 import {createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalizedGeneric} from 'vue-router';
-import HomeView from "../views/HomeView.vue";
-import GameView from "../views/GameView.vue";
-import LoginView from "../views/LoginView.vue";
+import Home from "../views/Home.vue";
+import Game from "../views/Game.vue";
+import Login from "../views/Login.vue";
+import Register from "../views/Register.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,7 +10,7 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: HomeView,
+            component: Home,
             meta: {
                 title: 'Home',
                 requiresAuth: false,
@@ -18,16 +19,25 @@ const router = createRouter({
         {
             path: '/login',
             name: 'login',
-            component: LoginView,
+            component: Login,
             meta: {
                 title: 'Login',
                 requiresAuth: false,
             },
         },
         {
+            path: '/register',
+            name: 'register',
+            component: Register,
+            meta: {
+                title: 'Register',
+                requiresAuth: false,
+            },
+        },
+        {
             path: '/game',
             name: 'game',
-            component: GameView,
+            component: Game,
             meta: {
                 title: 'Game',
                 requiresAuth: true,
@@ -38,7 +48,7 @@ const router = createRouter({
 
 router.beforeEach((
     to: RouteLocationNormalizedGeneric, 
-    _, 
+    _: RouteLocationNormalizedGeneric, 
     next: NavigationGuardNext
 ): void => {
     const loginStatus = true;
