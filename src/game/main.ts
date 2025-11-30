@@ -3,8 +3,6 @@ import { SpinePlugin } from "@esotericsoftware/spine-phaser-v3";
 
 import * as Scenes from "./scenes";
 
-// Find out more information about the Game Config at:
-// https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig
 const config: Types.Core.GameConfig = {
     type: AUTO,
     width: 540,
@@ -16,6 +14,12 @@ const config: Types.Core.GameConfig = {
         ]
     },
     backgroundColor: '#040517',
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: 540,
+        height: 960
+    },
     scene: [
         Scenes.Preload, 
         ...Object.values(Scenes)
