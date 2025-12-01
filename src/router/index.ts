@@ -51,13 +51,17 @@ router.beforeEach((
     _: RouteLocationNormalizedGeneric, 
     next: NavigationGuardNext
 ): void => {
-    const loginStatus = true;
+    const key = 'authToken';
+    const loginStatus = localStorage.getItem(key) || sessionStorage.getItem(key);
     
-    document.title = (to.meta?.title as string) ?? 'MSCI';
+    document.title = to.meta?.title as string ?? 'MSCI';
     
     if (to.meta?.requiresAuth && !loginStatus) {
         router.push({
             path: 'login',
+            query: {
+                next: to.name?.toString()
+            }
         }).then();
     }
         

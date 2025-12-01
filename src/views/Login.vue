@@ -2,24 +2,32 @@
     import WebLayer from "../components/WebLayer.vue";
     import { ref } from "vue";
     import axiosClient from "../libs/AxiosClient.ts";
+    import {useRoute} from "vue-router";
+    import router from "../router";
     
     const username = ref<String>('');
     const password = ref<String>('');
     const remember = ref<Boolean>(false);
+
+    const nextRoute: string = useRoute().query.next as string ?? 'home';
     
     const login = async () => {
         await axiosClient.post('/login', {
             username: username.value,
             password: password.value,
         }).then(res => {
-            const saveKey: string = `${username.value}-${window.location.hostname}-auth-token`;
+            const key = `authToken`;
             const token = res.data.token;
             
             if (remember.value) {
-                localStorage.setItem(saveKey, token);
+                localStorage.setItem(key, token);
             } else {
-                sessionStorage.setItem(saveKey, token);
+                sessionStorage.setItem(key, token);
             }
+            
+            router.push({
+                name: nextRoute
+            });
         });
     }
 </script>

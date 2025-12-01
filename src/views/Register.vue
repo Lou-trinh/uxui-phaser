@@ -15,7 +15,7 @@
             email: email.value,
             password: password.value,
         }).then(res => {
-            console.log(res.data);
+            console.log(res);
             router.push({ name: 'login' });
         });
     }
