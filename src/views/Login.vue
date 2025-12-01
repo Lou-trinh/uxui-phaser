@@ -1,8 +1,9 @@
 <script setup lang="ts">
     import WebLayer from "../components/WebLayer.vue";
-    import { ref } from "vue";
+    import { onMounted, ref} from "vue";
     import { useRoute } from "vue-router";
     import auth from "../libs/Auth.ts";
+    import router from "../router";
     
     const username = ref<String>('');
     const password = ref<String>('');
@@ -16,6 +17,14 @@
         remember.value == true,
         nextRoute
     );
+    
+    onMounted(() => {
+        if (auth.isLoggedIn()) {
+            router.push({
+                name: nextRoute
+            })
+        }
+    })
 </script>
 
 <template>
