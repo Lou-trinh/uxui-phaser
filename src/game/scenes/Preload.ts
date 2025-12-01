@@ -408,16 +408,31 @@ export class Preload extends Scene{
         this.load.image('frame-figure', 'frame-figure.png');
         this.load.image('character-title', 'character-title.png');
         this.load.image('level', 'level.png');
-        this.load.image('bottom-frame-black', 'bottom-frame-black.png');
+        this.load.image('bottom-frame-gray', 'bottom-frame-gray.png');
         this.load.image('bottom-frame-blue', 'bottom-frame-blue.png');
+        this.load.image('bottom-frame-red', 'bottom-frame-red.png');
+        this.load.image('bottom-frame-violet', 'bottom-frame-violet.png');
         this.load.image('bottom-frame-blue-1', 'bottom-frame-blue-1.png');
+        this.load.image('bottom-frame-gray-1', 'bottom-frame-gray-1.png');
+        this.load.image('bottom-frame-red-1', 'bottom-frame-red-1.png');
+        this.load.image('bottom-frame-violet-1', 'bottom-frame-violet-1.png');
         this.load.image('panels-gray', 'panels-gray.png');
         this.load.image('panels-yellow', 'panels-yellow.png');
         this.load.image('panels-red', 'panels-red.png');
         this.load.image('panels-blue', 'panels-blue.png');
-        this.load.image('icon-sniper-blue', 'icon-sniper-blue.png');
+        this.load.image('panels-violet', 'panels-violet.png');
+        this.load.image('icon-gunner-blue', 'icon-gunner-blue.png');
+        this.load.image('icon-sniper-gray', 'icon-sniper-gray.png');
+        this.load.image('icon-sniper-yellow', 'icon-sniper-yellow.png');
+        this.load.image('icon-sniper-violet', 'icon-sniper-violet.png');
+        this.load.image('icon-gunner-violet', 'icon-gunner-violet.png');
+        this.load.image('icon-rifle-red', 'icon-rifle-red.png');
         this.load.image('yellow-star', 'yellow-star.png');
         this.load.image('name-fiona', 'name-fiona.png');
+        this.load.image('name-henry', 'name-henry.png');
+        this.load.image('name-akane', 'name-akane.png');
+        this.load.image('name-elizabeth', 'name-elizabeth.png');
+        this.load.image('name-alexandra', 'name-alexandra.png');
         this.load.setPath('');
     }
 }

@@ -162,8 +162,8 @@ export class CharacterShowcase extends Scene {
     createCharacter() {
         createObjectUtils.createSpine(
             this,
-            'player-8-ui',
-            'player-8-ui-atlas',
+            'player-10-ui',
+            'player-10-ui-atlas',
             65,
             60,
             0.45,

@@ -33,8 +33,17 @@ export class Home extends Scene
         this.createChangeCharacter();
         this.createFrameNotice();
         this.updateCharacterByIndex();
+        this.createBackButton();
         
         EventBus.emit('current-scene-ready', this);
+    }
+
+    createBackButton() {
+        const shopBtn = createObjectUtils.createButton(this, 7, 20, 'back-btn', 0.5);
+
+        shopBtn.on('pointerdown', () => {
+            this.scene.start('Login');
+        });
     }
 
     createMiddleButtons () {
