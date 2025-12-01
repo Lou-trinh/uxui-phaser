@@ -17,8 +17,6 @@ const config: Types.Core.GameConfig = {
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: 540,
-        height: 960
     },
     scene: [
         Scenes.Preload, 

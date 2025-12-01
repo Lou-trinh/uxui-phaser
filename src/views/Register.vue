@@ -1,24 +1,18 @@
 <script setup lang="ts">
     import WebLayer from "../components/WebLayer.vue";
     import { ref } from "vue";
-    import axiosClient from "../libs/AxiosClient.ts";
-    import router from "../router";
+    import auth from "../libs/Auth.ts";
     
     const username = ref<String>('');
     const email = ref<String>('');
     const password = ref<String>('');
     const confirmPassword = ref<String>('');
 
-    const register = async () => {
-        await axiosClient.post('/register', {
-            username: username.value,
-            email: email.value,
-            password: password.value,
-        }).then(res => {
-            console.log(res);
-            router.push({ name: 'login' });
-        });
-    }
+    const register = () => auth.register(
+        username.value.toString(),
+        email.value.toString(),
+        password.value.toString()
+    );
 </script>
 
 <template>
