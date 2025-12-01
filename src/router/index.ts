@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import Game from "../views/Game.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
+import auth from "../libs/Auth.ts";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -51,12 +52,9 @@ router.beforeEach((
     _: RouteLocationNormalizedGeneric, 
     next: NavigationGuardNext
 ): void => {
-    const key = 'authToken';
-    const loginStatus = localStorage.getItem(key) || sessionStorage.getItem(key);
-    
     document.title = to.meta?.title as string ?? 'MSCI';
     
-    if (to.meta?.requiresAuth && !loginStatus) {
+    if (to.meta?.requiresAuth && !auth.isLoggedIn()) {
         router.push({
             path: 'login',
             query: {

@@ -40,5 +40,10 @@ export default {
             console.log(res);
             router.push({ name: 'login' });
         });
+    },
+    
+    isLoggedIn: function(): boolean {
+        const key = 'authToken';
+        return !!localStorage.getItem(key) || !!sessionStorage.getItem(key);
     }
 }
