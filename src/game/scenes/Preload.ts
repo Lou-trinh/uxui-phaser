@@ -18,14 +18,27 @@ export class Preload extends Scene{
         this.preloadInventory();
         this.preloadBackground();
         this.preloadCharacter();
+        this.preloadEnemys();
         this.preloadPlayersCard();
         this.preloadBattle();
         this.preloadCampaign();
         this.preloadMapEarth();
+        this.preloadShootBtn();
     }
     
     create() {
         this.scene.start('Home');
+    }
+
+    preloadEnemys(){
+        PreloadUtils.preloadEnemy(
+            this,
+            'enemy-0',
+            'enemy-0-ui-atlas',
+            'enemy_0_ui.atlas',
+            'enemy-0-ui',
+            'enemy_0_ui.json'
+        );
     }
     
     preloadPlayers() {
@@ -130,11 +143,29 @@ export class Preload extends Scene{
 
         PreloadUtils.preloadPlayer(
             this,
+            'player-10',
+            'player-10-gameplay-atlas',
+            'player_10_gameplay.atlas',
+            'player-10-gameplay',
+            'player_10_gameplay.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
             'player-11',
             'player-11-ui-atlas',
             'player_11_ui.atlas',
             'player-11-ui',
             'player_11_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-11',
+            'player-11-gameplay-atlas',
+            'player_11_gameplay.atlas',
+            'player-11-gameplay',
+            'player_11_gameplay.json'
         );
 
         PreloadUtils.preloadPlayer(
@@ -153,6 +184,15 @@ export class Preload extends Scene{
             'player_13_ui.atlas',
             'player-13-ui',
             'player_13_ui.json'
+        );
+
+        PreloadUtils.preloadPlayer(
+            this,
+            'player-13',
+            'player-13-gameplay-atlas',
+            'player_13_gameplay.atlas',
+            'player-13-gameplay',
+            'player_13_gameplay.json'
         );
 
         PreloadUtils.preloadPlayer(
@@ -244,18 +284,9 @@ export class Preload extends Scene{
             28: 'marcussc_ui_card'
         };
 
+        // CHỈ load card image thôi, không load player data nữa
         [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 20, 21, 23, 24, 28]
             .forEach(id => {
-                PreloadUtils.preloadPlayer(
-                    this,
-                    `player-${id}`,
-                    `player-${id}-ui-atlas`,
-                    `player_${id}_ui.atlas`,
-                    `player-${id}-ui`,
-                    `player_${id}_ui.json`
-                );
-
-                // Chỉ load card nếu có trong danh sách
                 if (cardNames[id]) {
                     this.load.setPath(`assets/players/player-${id}`);
                     this.load.image(cardNames[id], `${cardNames[id]}.png`);
@@ -473,6 +504,18 @@ export class Preload extends Scene{
         this.load.setPath('assets/mapEarth');
         this.load.image('map-1-bg', 'map-1-bg.png');
         this.load.image('wall-map-1', 'wall-map-1.png');
+        this.load.setPath('');
+    }
+    
+    preloadShootBtn() {
+        this.load.setPath('assets/shootBtn');
+        this.load.image('selector-btn-gunner', 'selector-btn-gunner.png');
+        this.load.image('selector-btn-rocket', 'selector-btn-rocket.png');
+        this.load.image('selector-btn-sniper', 'selector-btn-sniper.png');
+        this.load.image('selector-btn-gunner-selected', 'selector-btn-gunner-selected.png');
+        this.load.image('selector-btn-rocket-selected', 'selector-btn-rocket-selected.png');
+        this.load.image('selector-btn-sniper-selected', 'selector-btn-sniper-selected.png');
+        this.load.image('selector_item_btn', 'selector_item_btn.png');
         this.load.setPath('');
     }
 }

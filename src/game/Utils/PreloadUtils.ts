@@ -25,5 +25,17 @@ export default {
     ): void {
         const url: string = `assets/players/${PlayerUrl}/`;
         this.preloadSpine(scene, url, atlasKey, atlasUrl, dataKey, dataUrl);
+    },
+
+    preloadEnemy: function (
+        scene: Scene,
+        EnemyUrl: string,
+        atlasKey: string,
+        atlasUrl: string,
+        dataKey: string,
+        dataUrl: string
+    ): void {
+        const url: string = `assets/enemys/${EnemyUrl}/`;
+        this.preloadSpine(scene, url, atlasKey, atlasUrl, dataKey, dataUrl);
     }
 }
