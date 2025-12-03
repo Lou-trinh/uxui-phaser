@@ -19,6 +19,9 @@ export class Preload extends Scene{
         this.preloadBackground();
         this.preloadCharacter();
         this.preloadPlayersCard();
+        this.preloadBattle();
+        this.preloadCampaign();
+        this.preloadMapEarth();
     }
     
     create() {
@@ -433,6 +436,43 @@ export class Preload extends Scene{
         this.load.image('name-akane', 'name-akane.png');
         this.load.image('name-elizabeth', 'name-elizabeth.png');
         this.load.image('name-alexandra', 'name-alexandra.png');
+        this.load.setPath('');
+    }
+    
+    preloadBattle(){
+        this.load.setPath('assets/battle');
+        this.load.image('battle-bg', 'battle-bg.png');
+        this.load.image('battle-title', 'battle-title.png');
+        this.load.image('campaign-bg', 'campaign-bg.png');
+        this.load.image('boss-bg', 'boss-bg.png');
+        this.load.image('play-button', 'play-button.png');
+        this.load.image('create-button', 'create-button.png');
+        this.load.image('join-button', 'join-button.png');
+        this.load.image('rooms-button', 'rooms-button.png');
+        this.load.setPath('');
+    }
+
+    preloadCampaign(){
+        this.load.setPath('assets/campaign');
+        this.load.image('home-campaign-bg', 'home-campaign-bg.png');
+        this.load.image('act-bg-1', 'act-bg-1.png');
+        this.load.image('act-bg-2', 'act-bg-2.png');
+        this.load.image('act-bg-3', 'act-bg-3.png');
+        this.load.image('act-bg-4', 'act-bg-4.png');
+        this.load.image('act-bg-5', 'act-bg-5.png');
+        this.load.image('fight-button', 'fight-button.png');
+        this.load.image('earth', 'earth.png');
+        this.load.image('space', 'space.png');
+        this.load.image('mars', 'mars.png');
+        this.load.image('back-to-earth', 'back-to-earth.png');
+        this.load.image('x-corp', 'x-corp.png');
+        this.load.setPath('');
+    }
+
+    preloadMapEarth(){
+        this.load.setPath('assets/mapEarth');
+        this.load.image('map-1-bg', 'map-1-bg.png');
+        this.load.image('wall-map-1', 'wall-map-1.png');
         this.load.setPath('');
     }
 }

@@ -33,21 +33,12 @@ export class Home extends Scene
         this.createChangeCharacter();
         this.createFrameNotice();
         this.updateCharacterByIndex();
-        this.createBackButton();
         
         EventBus.emit('current-scene-ready', this);
     }
 
-    createBackButton() {
-        const shopBtn = createObjectUtils.createButton(this, 7, 20, 'back-btn', 0.5);
-
-        shopBtn.on('pointerdown', () => {
-            this.scene.start('Login');
-        });
-    }
-
     createMiddleButtons () {
-        createObjectUtils.createButton(this, 100, 76, 'battle', 0.5);
+        const battleBtn = createObjectUtils.createButton(this, 100, 76, 'battle', 0.5);
         const characterBtn = createObjectUtils.createButton(this, 0, 76, 'hero-recruit', 0.5);
         const shopBtn = createObjectUtils.createButton(this, 0, 65, 'shop', 0.5);
         const rewardBtn = createObjectUtils.createButton(this, 100, 65, 'reward', 0.5);
@@ -62,6 +53,10 @@ export class Home extends Scene
 
         characterBtn.on('pointerdown', () => {
             this.scene.start('CharacterShowcase');
+        });
+
+        battleBtn.on('pointerdown', () => {
+            this.scene.start('Battle');
         });
     }
 

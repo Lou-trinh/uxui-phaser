@@ -1,7 +1,10 @@
 export { Preload } from './Preload.ts'
-export { CharacterShowcase } from "./CharacterShowcase.ts";
+export { CharacterShowcase } from "./CharacterShowcase/CharacterShowcase.ts";
 export { Home } from "./Home.ts";
 export { Inventory } from "./Inventory.ts";
 export { Shop } from "./shop/Shop.ts";
 export { Reward } from "./Reward.ts";
-export { Character } from "./Character.ts";
+export { Character } from "./CharacterShowcase/Character.ts";
+export { Battle } from "./Battle/Battle.ts";
+export { Campaign } from "./Battle/Campaign.ts";
+export { Earth1 } from "./Battle/Earth1.ts";

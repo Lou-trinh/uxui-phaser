@@ -1,7 +1,7 @@
 import { Scene } from 'phaser';
-import { EventBus } from '../EventBus';
-import createObjectUtils from "../Utils/CreateObjectUtils.ts";
-import userInterface from "./interface/UserInterface.ts";
+import { EventBus } from '../../EventBus.ts';
+import createObjectUtils from "../../Utils/CreateObjectUtils.ts";
+import userInterface from "../interface/UserInterface.ts";
 
 export class Character extends Scene {
     constructor() {

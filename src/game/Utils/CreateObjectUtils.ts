@@ -24,11 +24,14 @@ export default {
         return object;
     },
 
-    createBackground: function (scene: Scene, key: string, scale: number = 0.5) {
+    createBackground: function (scene: Scene, key: string, percentX: number = -1, percentY: number = -1, scale: number = 0.5) {
         const sceneWidth = scene.cameras.main.width;
         const sceneHeight = scene.cameras.main.height;
 
-        return  this.createGameObject(scene, sceneWidth / 2, sceneHeight / 2, key, scale);
+        let x: number = percentX == -1 ? sceneWidth / 2 : sceneWidth * percentX / 100;
+        let y: number = percentY == -1 ? sceneHeight / 2 : sceneHeight * percentY / 100;
+        
+        return this.createGameObject(scene, x, y, key, scale);
     },
 
     createSpine: function (
