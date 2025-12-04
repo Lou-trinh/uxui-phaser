@@ -24,6 +24,7 @@ export class Preload extends Scene{
         this.preloadCampaign();
         this.preloadMapEarth();
         this.preloadShootBtn();
+        this.preloadFrameEndGame();
     }
     
     create() {
@@ -38,6 +39,15 @@ export class Preload extends Scene{
             'enemy_0_ui.atlas',
             'enemy-0-ui',
             'enemy_0_ui.json'
+        );
+
+        PreloadUtils.preloadEnemy(
+            this,
+            'enemy-1',
+            'enemy-1-ui-atlas',
+            'enemy_1_ui.atlas',
+            'enemy-1-ui',
+            'enemy_1_ui.json'
         );
     }
     
@@ -516,6 +526,21 @@ export class Preload extends Scene{
         this.load.image('selector-btn-rocket-selected', 'selector-btn-rocket-selected.png');
         this.load.image('selector-btn-sniper-selected', 'selector-btn-sniper-selected.png');
         this.load.image('selector_item_btn', 'selector_item_btn.png');
+        this.load.image('player-crosshair-gunner', 'player-crosshair-gunner.png');
+        this.load.image('player-crosshair-rocket', 'player-crosshair-rocket.png');
+        this.load.image('player-crosshair-sniper', 'player-crosshair-sniper.png');
+        this.load.setPath('');
+    }
+    
+    preloadFrameEndGame() {
+        this.load.setPath('assets/endGame');
+        this.load.image('game-complete-text', 'game-complete-text.png');
+        this.load.image('game-over-btn-claim', 'game-over-btn-claim.png');
+        this.load.image('game-over-btn-exit', 'game-over-btn-exit.png');
+        this.load.image('game-over-btn-next', 'game-over-btn-next.png');
+        this.load.image('game-over-btn-playagain', 'game-over-btn-playagain.png');
+        this.load.image('game-over-text', 'game-over-text.png');
+        this.load.image('enemy-attack-warning', 'enemy-attack-warning.png');
         this.load.setPath('');
     }
 }
