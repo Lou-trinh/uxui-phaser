@@ -18,6 +18,7 @@ export class Earth1 extends Scene {
         this.createStageName();
         this.createButton();
         this.createCharacter();
+        this.characterSelect('gunner');
     }
 
     createBackground() {
@@ -95,7 +96,7 @@ export class Earth1 extends Scene {
         this.createItemArmorBtn();
     }
 
-    btnCharacterSelect(type: string = 'gunner') {
+    characterSelect(type: string = 'gunner') {
         for (const value of Object.values(Type)) {
             this.arrCharacterBtn[value].setInteractive();
             this.arrCharacter[value].setVisible(false);
@@ -111,7 +112,7 @@ export class Earth1 extends Scene {
         this.arrCharacterBtn[Type.GUNNER] = createObjectUtils.createButton(this, 63, 93, 'selector-btn-gunner', 0.5)
             .setInteractive()
             .on('pointerdown', () => {
-                this.btnCharacterSelect('gunner');
+                this.characterSelect('gunner');
             });
     }
 
@@ -119,7 +120,7 @@ export class Earth1 extends Scene {
         this.arrCharacterBtn[Type.SNIPER] = createObjectUtils.createButton(this, 72, 83, 'selector-btn-sniper', 0.5)
             .setInteractive()
             .on('pointerdown', () => {
-                this.btnCharacterSelect('sniper');
+                this.characterSelect('sniper');
             });
     }
 
@@ -127,7 +128,7 @@ export class Earth1 extends Scene {
         this.arrCharacterBtn[Type.ROCKET] = createObjectUtils.createButton(this, 90, 78, 'selector-btn-rocket', 0.5)
             .setInteractive()
             .on('pointerdown', () => {
-                this.btnCharacterSelect('rocket');
+                this.characterSelect('rocket');
             });
     }
 
