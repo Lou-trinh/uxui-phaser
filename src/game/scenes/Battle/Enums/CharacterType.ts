@@ -1,4 +1,4 @@
-export enum Type {
+export enum CharacterType {
     GUNNER = 'gunner',
     SNIPER = 'sniper',
     ROCKET = 'rocket'

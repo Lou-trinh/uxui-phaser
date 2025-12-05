@@ -1,10 +1,11 @@
 import { Scene } from "phaser";
 import createObjectUtils from "../../Utils/CreateObjectUtils.ts";
-import {Type} from "./Enums/Type.ts";
+import {CharacterType} from "./Enums/CharacterType.ts";
 
 export class Earth1 extends Scene {
     backButton: Phaser.GameObjects.Image;
     arrCharacter: Record<string, any>;
+    arrEnemy: Record<string, any>;
     arrCharacterBtn: Record<string, any>;
 
     constructor() {
@@ -14,6 +15,7 @@ export class Earth1 extends Scene {
     create() {
         this.createBackground();
         this.createBackButton();
+        this.createEnemy();
         this.createWall();
         this.createStageName();
         this.createButton();
@@ -47,11 +49,26 @@ export class Earth1 extends Scene {
     createWall() {
         createObjectUtils.createImage(this, 23, 75, 'wall-map-1', 0.5);
     }
+    
+    createEnemy() {
+        this.arrEnemy = {};
+        
+        this.arrEnemy['enemy1'] = createObjectUtils.createSpine(
+                this,
+                'enemy-0-ui',
+                'enemy-0-ui-atlas',
+                50,
+                50,
+                0.5,
+                'default',
+                'idle'
+        );
+    }
 
     createCharacter () {
         this.arrCharacter = {};
         
-        this.arrCharacter[Type.GUNNER] = createObjectUtils.createSpine(
+        this.arrCharacter[CharacterType.GUNNER] = createObjectUtils.createSpine(
             this,
             'player-10-gameplay',
             'player-10-gameplay-atlas',
@@ -62,7 +79,7 @@ export class Earth1 extends Scene {
             'idle'
         );
 
-        this.arrCharacter[Type.SNIPER] = createObjectUtils.createSpine(
+        this.arrCharacter[CharacterType.SNIPER] = createObjectUtils.createSpine(
             this,
             'player-11-gameplay',
             'player-11-gameplay-atlas',
@@ -73,7 +90,7 @@ export class Earth1 extends Scene {
             'idle'
         );
 
-        this.arrCharacter[Type.ROCKET] = createObjectUtils.createSpine(
+        this.arrCharacter[CharacterType.ROCKET] = createObjectUtils.createSpine(
             this,
             'player-13-gameplay',
             'player-13-gameplay-atlas',
@@ -97,19 +114,21 @@ export class Earth1 extends Scene {
     }
 
     characterSelect(type: string = 'gunner') {
-        for (const value of Object.values(Type)) {
+        for (const value of Object.values(CharacterType)) {
             this.arrCharacterBtn[value].setInteractive();
+            this.arrCharacterBtn[value].setTexture(`selector-btn-${value}`);
             this.arrCharacter[value].setVisible(false);
             
             if (value == type) {
                 this.arrCharacterBtn[value].disableInteractive();
+                this.arrCharacterBtn[value].setTexture(`selector-btn-${value}-selected`);
                 this.arrCharacter[value].setVisible(true);
             }
         }
     }
 
     createGunnerBtn() {
-        this.arrCharacterBtn[Type.GUNNER] = createObjectUtils.createButton(this, 63, 93, 'selector-btn-gunner', 0.5)
+        this.arrCharacterBtn[CharacterType.GUNNER] = createObjectUtils.createButton(this, 63, 93, 'selector-btn-gunner', 0.5)
             .setInteractive()
             .on('pointerdown', () => {
                 this.characterSelect('gunner');
@@ -117,7 +136,7 @@ export class Earth1 extends Scene {
     }
 
     createSniperBtn() {
-        this.arrCharacterBtn[Type.SNIPER] = createObjectUtils.createButton(this, 72, 83, 'selector-btn-sniper', 0.5)
+        this.arrCharacterBtn[CharacterType.SNIPER] = createObjectUtils.createButton(this, 72, 83, 'selector-btn-sniper', 0.5)
             .setInteractive()
             .on('pointerdown', () => {
                 this.characterSelect('sniper');
@@ -125,7 +144,7 @@ export class Earth1 extends Scene {
     }
 
     createRocketBtn() {
-        this.arrCharacterBtn[Type.ROCKET] = createObjectUtils.createButton(this, 90, 78, 'selector-btn-rocket', 0.5)
+        this.arrCharacterBtn[CharacterType.ROCKET] = createObjectUtils.createButton(this, 90, 78, 'selector-btn-rocket', 0.5)
             .setInteractive()
             .on('pointerdown', () => {
                 this.characterSelect('rocket');
