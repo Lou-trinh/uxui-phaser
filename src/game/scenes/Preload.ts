@@ -49,6 +49,33 @@ export class Preload extends Scene{
             'enemy-1-ui',
             'enemy_1_ui.json'
         );
+
+        PreloadUtils.preloadEnemy(
+            this,
+            'enemy-2',
+            'enemy-2-ui-atlas',
+            'play_drone_0.atlas',
+            'enemy-2-ui',
+            'play_drone_0.json'
+        );
+
+        PreloadUtils.preloadEnemy(
+            this,
+            'enemy-3',
+            'enemy-3-ui-atlas',
+            'play_drone_1.atlas',
+            'enemy-3-ui',
+            'play_drone_1.json'
+        );
+
+        PreloadUtils.preloadEnemy(
+            this,
+            'enemy-4',
+            'enemy-4-ui-atlas',
+            'enemy_elite_1.atlas',
+            'enemy-4-ui',
+            'enemy_elite_1.json'
+        );
     }
     
     preloadPlayers() {

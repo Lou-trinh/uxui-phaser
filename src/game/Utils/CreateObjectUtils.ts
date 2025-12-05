@@ -1,37 +1,34 @@
 import { Scene } from 'phaser';
-import { SkinsAndAnimationBoundsProvider } 
+import {SkinsAndAnimationBoundsProvider, SpineGameObject}
     from "@esotericsoftware/spine-phaser-v3";
 
 export default {
-    createGameObject: function (
+    createImageFactory: function (
         scene: Scene,
         x: number,
         y: number,
         key: string,
         scale: number = 1,
-        type: string = 'image'
-    ) {
-        let object;
+    ): Phaser.GameObjects.Image {
 
-        if (type === 'image') {
-            object = scene.add.image(x, y, key);
-        } else {
-            object = scene.add.image(x, y, key);
-        }
-
-        object.setScale(scale);
-
-        return object;
+        return scene.add.image(x, y, key)
+            .setScale(scale);
     },
 
-    createBackground: function (scene: Scene, key: string, percentX: number = -1, percentY: number = -1, scale: number = 0.5) {
+    createBackground: function (
+        scene: Scene, 
+        key: string, 
+        percentX: number = -1,
+        percentY: number = -1,
+        scale: number = 0.5
+    ): Phaser.GameObjects.Image {
         const sceneWidth = scene.cameras.main.width;
         const sceneHeight = scene.cameras.main.height;
 
         let x: number = percentX == -1 ? sceneWidth / 2 : sceneWidth * percentX / 100;
         let y: number = percentY == -1 ? sceneHeight / 2 : sceneHeight * percentY / 100;
         
-        return this.createGameObject(scene, x, y, key, scale);
+        return this.createImageFactory(scene, x, y, key, scale);
     },
 
     createSpine: function (
@@ -43,7 +40,7 @@ export default {
         scale: number = 1,
         defaultSkin: string = "default",
         defaultAnimation: string = "idle",
-    ) {
+    ): SpineGameObject {
         let x = scene.cameras.main.width * percentX / 100;
         let y = scene.cameras.main.height * percentY / 100;
 
@@ -65,9 +62,8 @@ export default {
         percentY: integer,
         key: string,
         scale: number = 1
-    ) {
-
-        const btn = this.createGameObject(
+    ): Phaser.GameObjects.Image {
+        const btn: Phaser.GameObjects.Image = this.createImageFactory(
             scene,
             0,
             0,
@@ -75,7 +71,7 @@ export default {
             scale
         )
 
-        const btnWidth = btn.width;
+        const btnWidth: number = btn.width;
 
         let x = scene.cameras.main.width * percentX / 100;
 
@@ -85,9 +81,9 @@ export default {
 
         btn.x = x;
 
-        const btnHeight = btn.height;
+        const btnHeight: number = btn.height;
 
-        let y = scene.cameras.main.height * percentY / 100;
+        let y: number = scene.cameras.main.height * percentY / 100;
 
         if (percentY == 0 || percentY == 100) {
             y = percentY == 0 ? y + btnHeight / 4 : y - btnHeight / 4;
@@ -104,7 +100,7 @@ export default {
         percentY: integer,
         key: string,
         scale: number = 1
-    ) {
+    ): Phaser.GameObjects.Image {
         return this.createImage(scene, percentX, percentY, key, scale).setInteractive();
     },
 }
