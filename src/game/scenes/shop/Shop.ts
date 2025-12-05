@@ -91,29 +91,35 @@ export class Shop extends Scene {
 
     createScrollableItemBox() {
         const count: number = 12;
-        let numRow = Math.ceil(count / 3);
+        const numRow = Math.ceil(count / 3);
+        const standardRow = 3;
+        
+        let itemCount = 0;
 
         this.scrollContainer = this.add.container(0, 0);
         
         for (let i = 0; i < numRow; i++) {
             for (let j = 0; j < 3; j++) {
-                const saleNumber = numberUtils.getRandomNumberOfRange(0, 2);
-                const texture = saleNumber % 2 === 1 ? 'item-sale' : 'item-not-sale';
+                if (itemCount < count) {
+                    itemCount++;
+                    
+                    const saleNumber = numberUtils.getRandomNumberOfRange(0, 2);
+                    const texture = saleNumber % 2 === 1 ? 'item-sale' : 'item-not-sale';
 
-                const x = j * 50;
-                const y = i * 26 + 34;
-                const itemBtn = createObjectUtils.createButton(this, x, y, texture, 0.5)
-                    .on('pointerdown', () => this.createBackgroundPurchase());
+                    const x = j * 50;
+                    const y = i * 26 + 34;
+                    const itemBtn = createObjectUtils.createButton(this, x, y, texture, 0.5)
+                        .on('pointerdown', () => this.createBackgroundPurchase());
 
-                this.scrollContainer.add(itemBtn);
+                    if (i == 0 && j == 0 && numRow > standardRow) {
+                        const rowHeight: integer = itemBtn.height / 2 + 13;
+                        this.maxScrollY = rowHeight * (numRow - standardRow);
+                    }
+
+                    this.scrollContainer.add(itemBtn);
+                }
             }
         }
-
-        const screenHeight = this.cameras.main.height;
-        const containerHeight = numRow * screenHeight * 26 / 100;
-        const visibleHeight = screenHeight * 60 / 100;
-        this.maxScrollY = Math.max(0, containerHeight - visibleHeight);
-        
         this.setupScrollMask();
         this.setupScrollEvents();
     }

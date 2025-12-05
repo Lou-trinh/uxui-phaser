@@ -43,8 +43,7 @@ export default {
     },
     
     isLoggedIn: function(): boolean {
-        return true;
-        // const key = 'authToken';
-        // return !!localStorage.getItem(key) || !!sessionStorage.getItem(key);
+        const key = 'authToken';
+        return !!localStorage.getItem(key) || !!sessionStorage.getItem(key);
     }
 }

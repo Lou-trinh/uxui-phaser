@@ -1,7 +1,7 @@
 import { Scene } from 'phaser';
-import { EventBus } from '../EventBus';
-import createObjectUtils from "../Utils/CreateObjectUtils.ts";
-import gameDataUtils from "../Utils/GameDataUtils.ts";
+import { EventBus } from '../../EventBus.ts';
+import createObjectUtils from "../../Utils/CreateObjectUtils.ts";
+import gameDataUtils from "../../Utils/GameDataUtils.ts";
 import {SpineGameObject} from "@esotericsoftware/spine-phaser-v3";
 
 export class Home extends Scene
