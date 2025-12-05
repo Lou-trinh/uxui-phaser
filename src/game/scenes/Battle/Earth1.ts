@@ -97,10 +97,14 @@ export class Earth1 extends Scene {
 
     btnCharacterSelect(type: string = 'gunner') {
         for (const value of Object.values(Type)) {
-            this.arrCharacterBtn[value].inputEnabled = value != type;
+            this.arrCharacterBtn[value].setInteractive();
+            this.arrCharacter[value].setVisible(false);
+            
+            if (value == type) {
+                this.arrCharacterBtn[value].disableInteractive();
+                this.arrCharacter[value].setVisible(true);
+            }
         }
-
-        console.log(this.arrCharacterBtn);
     }
 
     createGunnerBtn() {
